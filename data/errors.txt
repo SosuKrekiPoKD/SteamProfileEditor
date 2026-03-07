@@ -1,0 +1,742 @@
+[2026-03-04 14:07:50] [FAIL] Test error message
+[2026-03-04 14:07:50] [FAIL] Smart detected error
+[2026-03-04 19:23:43] [ERROR] Need at least 2 selected accounts.
+[2026-03-04 19:25:34] [CANCELLED] Friend adding cancelled.
+[2026-03-04 19:28:13] [FAIL] Login failed for ustanovkamatch: Login failed for ustanovkamatch: No client_id in auth response
+[2026-03-04 19:28:13] [FAIL] Login failed for cgqrf052: Login failed for cgqrf052: No client_id in auth response
+[2026-03-04 19:28:30] [FAIL] Login failed for ustanovkamatch: Login failed for ustanovkamatch: No client_id in auth response
+[2026-03-04 19:28:31] [FAIL] Login failed for cgqrf052: Login failed for cgqrf052: No client_id in auth response
+[2026-03-04 19:28:32] [FAIL] Login failed for 13863876998: Login failed for 13863876998: No client_id in auth response
+[2026-03-04 19:32:19] [FAIL] Login failed for ustanovkamatch: Auth polling timed out (Steam didn't confirm login) [Connection timed out — proxy or Steam issue]
+[2026-03-04 19:32:54] [FAIL] Login failed for cgqrf052: Auth polling timed out (Steam didn't confirm login) [Connection timed out — proxy or Steam issue]
+[2026-03-04 19:33:29] [FAIL] Login failed for 13863876998: Auth polling timed out (Steam didn't confirm login) [Connection timed out — proxy or Steam issue]
+[2026-03-04 19:34:04] [FAIL] Login failed for 17591937133: Auth polling timed out (Steam didn't confirm login) [Connection timed out — proxy or Steam issue]
+[2026-03-04 19:34:40] [FAIL] Login failed for 14605263038: Auth polling timed out (Steam didn't confirm login) [Connection timed out — proxy or Steam issue]
+[2026-03-04 19:35:07] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400
+[2026-03-04 19:35:10] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400
+[2026-03-04 19:35:12] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400
+[2026-03-04 19:35:15] [FAIL] ustanovkamatch -> failed to add 13863876998: HTTP 400
+[2026-03-04 19:35:17] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400
+[2026-03-04 19:35:25] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 400
+[2026-03-04 19:35:29] [FAIL] cgqrf052 -> failed to add 13061588458: HTTP 400
+[2026-03-04 19:35:32] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400
+[2026-03-04 19:35:35] [FAIL] cgqrf052 -> failed to add 13309240617: HTTP 400
+[2026-03-04 19:35:37] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400
+[2026-03-04 19:35:40] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400
+[2026-03-04 19:35:49] [FAIL] 13863876998 -> failed to add cgqrf052: HTTP 400
+[2026-03-04 19:35:52] [FAIL] 13863876998 -> failed to add 13061588458: HTTP 400
+[2026-03-04 19:35:55] [FAIL] 13863876998 -> failed to add 14605263038: HTTP 400
+[2026-03-04 19:35:57] [FAIL] 13863876998 -> failed to add 13919708704: HTTP 400
+[2026-03-04 19:35:58] [FAIL] 13863876998 -> failed to add ustanovkamatch: HTTP 400
+[2026-03-04 19:36:01] [FAIL] 13863876998 -> failed to add 13309240617: HTTP 400
+[2026-03-04 19:36:03] [FAIL] 13863876998 -> failed to add 17591937133: HTTP 400
+[2026-03-04 19:36:10] [FAIL] 17591937133 -> failed to add ustanovkamatch: HTTP 400
+[2026-03-04 19:36:14] [FAIL] 17591937133 -> failed to add 14605263038: HTTP 400
+[2026-03-04 19:36:16] [FAIL] 17591937133 -> failed to add 13919708704: HTTP 400
+[2026-03-04 19:36:19] [FAIL] 17591937133 -> failed to add 13061588458: HTTP 400
+[2026-03-04 19:40:13] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:16] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:19] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:23] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:25] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:28] [FAIL] ustanovkamatch -> failed to add 13863876998: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:31] [FAIL] ustanovkamatch -> failed to add mb6171912: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:34] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:38] [FAIL] cgqrf052 -> failed to add 13309240617: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:41] [FAIL] cgqrf052 -> failed to add mb6171912: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:43] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:46] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:49] [FAIL] 13863876998 -> failed to add cgqrf052: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:52] [FAIL] 13863876998 -> failed to add 14605263038: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:54] [FAIL] 13863876998 -> failed to add ustanovkamatch: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:40:57] [FAIL] 13863876998 -> failed to add mb6171912: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:00] [FAIL] 13863876998 -> failed to add 13309240617: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:02] [FAIL] 17591937133 -> failed to add 13863876998: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:05] [FAIL] 17591937133 -> failed to add 13919708704: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:07] [FAIL] 17591937133 -> failed to add 13061588458: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:10] [FAIL] 17591937133 -> failed to add 13309240617: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:13] [FAIL] 17591937133 -> failed to add ustanovkamatch: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:15] [FAIL] 17591937133 -> failed to add mb6171912: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:17] [FAIL] 17591937133 -> failed to add cgqrf052: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:21] [FAIL] 17591937133 -> failed to add 14605263038: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:23] [FAIL] 14605263038 -> failed to add mb6171912: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:25] [FAIL] 14605263038 -> failed to add 13919708704: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:28] [FAIL] 14605263038 -> failed to add 13863876998: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:29] [FAIL] 14605263038 -> failed to add cgqrf052: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:31] [FAIL] 14605263038 -> failed to add ustanovkamatch: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:33] [FAIL] 14605263038 -> failed to add 17591937133: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:37] [FAIL] 14605263038 -> failed to add 13309240617: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:39] [FAIL] 13919708704 -> failed to add cgqrf052: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:41] [FAIL] 13919708704 -> failed to add 17591937133: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:43] [FAIL] 13919708704 -> failed to add 13863876998: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:45] [FAIL] 13919708704 -> failed to add 13309240617: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:47] [FAIL] 13919708704 -> failed to add 14605263038: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:50] [FAIL] 13309240617 -> failed to add 13061588458: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:53] [FAIL] 13309240617 -> failed to add ustanovkamatch: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:41:57] [FAIL] 13309240617 -> failed to add 13919708704: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:42:00] [FAIL] 13309240617 -> failed to add 17591937133: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:42:03] [FAIL] 13309240617 -> failed to add 13863876998: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:42:05] [FAIL] 13061588458 -> failed to add 14605263038: HTTP 400 [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:44:20] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:44:23] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:44:26] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:44:28] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:44:32] [FAIL] ustanovkamatch -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:44:36] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:44:39] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:44:42] [FAIL] ustanovkamatch -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:20] [FAIL] ustanovkamatch -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:23] [FAIL] ustanovkamatch -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:24] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:26] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:28] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:30] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:33] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:37] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:40] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:43] [FAIL] cgqrf052 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:45] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:46] [FAIL] cgqrf052 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:50] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:53] [FAIL] 13863876998 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:56] [FAIL] 13863876998 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:53:58] [FAIL] 13863876998 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:00] [FAIL] 13863876998 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:02] [FAIL] 13863876998 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:04] [FAIL] 13863876998 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:06] [FAIL] 13863876998 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:08] [FAIL] 13863876998 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:10] [FAIL] 17591937133 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:12] [FAIL] 17591937133 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:14] [FAIL] 17591937133 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:16] [FAIL] 17591937133 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:18] [FAIL] 17591937133 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:20] [FAIL] 17591937133 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:21] [FAIL] 14605263038 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:24] [FAIL] 14605263038 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:27] [FAIL] 14605263038 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:29] [FAIL] 14605263038 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:31] [FAIL] 14605263038 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:33] [FAIL] 14605263038 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:35] [FAIL] 14605263038 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:37] [FAIL] 13919708704 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:39] [FAIL] 13919708704 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:42] [FAIL] 13919708704 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:44] [FAIL] 13919708704 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:46] [FAIL] 13919708704 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:48] [FAIL] 13919708704 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:51] [FAIL] 13309240617 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:54] [FAIL] 13309240617 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:56] [FAIL] 13309240617 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:54:58] [FAIL] 13309240617 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:01] [FAIL] 13309240617 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:04] [FAIL] 13309240617 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:05] [FAIL] 13309240617 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:08] [FAIL] 13061588458 -> failed to add 13919708704: HTTP 502: ﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="title">Error</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            height: 100%;
+
+[2026-03-04 19:55:11] [FAIL] 13061588458 -> failed to add mb6171912: HTTP 502: ﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="title">Error</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            height: 100%;
+
+[2026-03-04 19:55:14] [FAIL] 13061588458 -> failed to add cgqrf052: HTTP 502: ﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="title">Error</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            height: 100%;
+
+[2026-03-04 19:55:16] [FAIL] 13061588458 -> failed to add 13309240617: HTTP 502: ﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="title">Error</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            height: 100%;
+
+[2026-03-04 19:55:19] [FAIL] 13061588458 -> failed to add 17591937133: HTTP 502: ﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="title">Error</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            height: 100%;
+
+[2026-03-04 19:55:23] [FAIL] mb6171912 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:25] [FAIL] mb6171912 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:28] [FAIL] mb6171912 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:31] [FAIL] mb6171912 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:34] [FAIL] mb6171912 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:36] [FAIL] mb6171912 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:39] [FAIL] mb6171912 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 19:55:41] [FAIL] mb6171912 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:29:49] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:29:51] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:29:53] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:29:56] [FAIL] ustanovkamatch -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:29:57] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:29:59] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:02] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:03] [FAIL] cgqrf052 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:06] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:08] [FAIL] cgqrf052 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:10] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:12] [FAIL] 13863876998 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:16] [FAIL] 13863876998 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:17] [FAIL] 13863876998 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:20] [FAIL] 13863876998 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:24] [FAIL] 13863876998 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:27] [FAIL] 17591937133 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:30] [FAIL] 17591937133 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:33] [FAIL] 17591937133 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:36] [FAIL] 17591937133 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:39] [FAIL] 17591937133 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:41] [FAIL] 14605263038 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:44] [FAIL] 14605263038 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:47] [FAIL] 14605263038 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:49] [FAIL] 14605263038 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:50] [FAIL] 14605263038 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:53] [FAIL] 14605263038 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:30:56] [FAIL] 14605263038 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:00] [FAIL] 13919708704 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:03] [FAIL] 13919708704 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:05] [FAIL] 13919708704 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:07] [FAIL] 13919708704 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:09] [FAIL] 13919708704 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:11] [FAIL] 13919708704 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:14] [FAIL] 13919708704 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:17] [FAIL] 13309240617 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:19] [FAIL] 13309240617 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:22] [FAIL] 13309240617 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:24] [FAIL] 13309240617 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:26] [FAIL] 13309240617 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:28] [FAIL] 13309240617 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:30] [FAIL] 13309240617 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:33] [FAIL] 13309240617 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:35] [FAIL] 13061588458 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:37] [FAIL] 13061588458 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:40] [FAIL] 13061588458 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:42] [FAIL] 13061588458 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:44] [FAIL] 13061588458 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:46] [FAIL] 13061588458 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:49] [FAIL] 13061588458 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:51] [FAIL] 13061588458 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:54] [FAIL] mb6171912 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:56] [FAIL] mb6171912 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:31:59] [FAIL] mb6171912 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:32:01] [FAIL] mb6171912 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:32:05] [FAIL] mb6171912 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:32:06] [FAIL] mb6171912 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:32:08] [FAIL] mb6171912 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:32:10] [FAIL] mb6171912 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:10] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:12] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:15] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:18] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:21] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:24] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:26] [FAIL] ustanovkamatch -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:29] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:32] [FAIL] cgqrf052 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:34] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:36] [FAIL] cgqrf052 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:38] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:40] [FAIL] cgqrf052 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:44] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:47] [FAIL] cgqrf052 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:51] [FAIL] 13863876998 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:54] [FAIL] 13863876998 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:57] [FAIL] 13863876998 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:33:59] [FAIL] 13863876998 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:02] [FAIL] 13863876998 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:03] [FAIL] 13863876998 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:05] [FAIL] 13863876998 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:06] [FAIL] 13863876998 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:10] [FAIL] 17591937133 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:13] [FAIL] 17591937133 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:16] [FAIL] 17591937133 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:18] [FAIL] 17591937133 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:21] [FAIL] 17591937133 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:23] [FAIL] 17591937133 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:25] [FAIL] 14605263038 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:28] [FAIL] 14605263038 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:31] [FAIL] 14605263038 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:33] [FAIL] 14605263038 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:35] [FAIL] 14605263038 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:38] [FAIL] 14605263038 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:40] [FAIL] 14605263038 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:43] [FAIL] 14605263038 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:46] [FAIL] 13919708704 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:49] [FAIL] 13919708704 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:52] [FAIL] 13919708704 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:55] [FAIL] 13919708704 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:57] [FAIL] 13919708704 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:34:59] [FAIL] 13309240617 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:02] [FAIL] 13309240617 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:04] [FAIL] 13309240617 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:07] [FAIL] 13309240617 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:09] [FAIL] 13309240617 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:11] [FAIL] 13061588458 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:14] [FAIL] 13061588458 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:16] [FAIL] 13061588458 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:18] [FAIL] 13061588458 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:19] [FAIL] 13061588458 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:21] [FAIL] 13061588458 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:23] [FAIL] 13061588458 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:26] [FAIL] 13061588458 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:28] [FAIL] mb6171912 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:31] [FAIL] mb6171912 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:34] [FAIL] mb6171912 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:36] [FAIL] mb6171912 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:39] [FAIL] mb6171912 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:42] [FAIL] mb6171912 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:43] [FAIL] mb6171912 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 20:35:45] [FAIL] mb6171912 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:24:50]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:24:50] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:24:53]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:24:53] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:24:56]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:24:56] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:24:58]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:24:58] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:25:02]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:25:02] [FAIL] ustanovkamatch -> failed to add mb6171912: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:25:05]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:25:05] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:25:07]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:25:07] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:25:09]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:25:09] [FAIL] cgqrf052 -> failed to add 13061588458: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:25:11]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:25:11] [FAIL] cgqrf052 -> failed to add 13309240617: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:25:13]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:25:13] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:25:16]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:25:16] [FAIL] 13863876998 -> failed to add 17591937133: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:25:19]   [DEBUG] AddFriend response: HTTP 401, body=<html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html>
+[2026-03-04 21:25:19] [FAIL] 13863876998 -> failed to add ustanovkamatch: HTTP 401: <html><head><title>Unauthorized</title></head><body><h1>Unauthorized</h1>Access is denied. Retrying will not help. Please verify your <pre>key=</pre> parameter.</body></html> [Session expired — re-login needed]
+[2026-03-04 21:28:20] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:22] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:25] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:28] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:31] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:34] [FAIL] ustanovkamatch -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:37] [FAIL] ustanovkamatch -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:39] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:42] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:44] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:47] [FAIL] cgqrf052 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:28:49] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:32:49] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:32:52] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:32:56] [FAIL] ustanovkamatch -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:32:59] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:33:01] [FAIL] ustanovkamatch -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:33:03] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:33:06] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:33:08] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:35] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:37] [FAIL] ustanovkamatch -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:39] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:41] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:45] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:46] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:49] [FAIL] cgqrf052 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:51] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:53] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:56] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:34:58] [FAIL] cgqrf052 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:01] [FAIL] cgqrf052 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:04] [FAIL] 13863876998 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:07] [FAIL] 13863876998 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:11] [FAIL] 13863876998 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:14] [FAIL] 13863876998 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:17] [FAIL] 13863876998 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:18] [FAIL] 13863876998 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:21] [FAIL] 17591937133 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:25] [FAIL] 17591937133 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:27] [FAIL] 17591937133 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:29] [FAIL] 17591937133 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:32] [FAIL] 17591937133 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:35] [FAIL] 17591937133 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:37] [FAIL] 17591937133 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:39] [FAIL] 14605263038 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:41] [FAIL] 14605263038 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:43] [FAIL] 14605263038 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:46] [FAIL] 14605263038 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:49] [FAIL] 14605263038 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:52] [FAIL] 14605263038 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:55] [FAIL] 14605263038 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:57] [FAIL] 13919708704 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:35:59] [FAIL] 13919708704 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:03] [FAIL] 13919708704 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:05] [FAIL] 13919708704 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:07] [FAIL] 13919708704 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:10] [FAIL] 13919708704 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:12] [FAIL] 13919708704 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:14] [FAIL] 13919708704 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:16] [FAIL] 13309240617 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:19] [FAIL] 13309240617 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:22] [FAIL] 13309240617 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:25] [FAIL] 13309240617 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:28] [FAIL] 13309240617 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:31] [FAIL] 13309240617 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:35] [FAIL] 13061588458 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:38] [FAIL] 13061588458 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:42] [FAIL] 13061588458 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:43] [FAIL] 13061588458 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:47] [FAIL] 13061588458 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:49] [FAIL] 13061588458 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:53] [FAIL] mb6171912 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:55] [FAIL] mb6171912 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:36:58] [FAIL] mb6171912 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:37:01] [FAIL] mb6171912 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:37:04] [FAIL] mb6171912 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:37:06] [FAIL] mb6171912 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:37:09] [FAIL] mb6171912 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:37:10] [FAIL] mb6171912 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:06] [mb6171912] Auth response: client_id=3520142905099744514, steamid=76561198783287039, confirmations=[{'confirmation_type': 3}, {'confirmation_type': 4}]
+[2026-03-04 21:39:11] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:14] [FAIL] ustanovkamatch -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:17] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:21] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:23] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:25] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:27] [FAIL] cgqrf052 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:30] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:32] [FAIL] cgqrf052 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:34] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:37] [FAIL] cgqrf052 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:39:39] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:10] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:13] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:15] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:17] [FAIL] ustanovkamatch -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:20] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:23] [FAIL] cgqrf052 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:26] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:29] [FAIL] cgqrf052 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:32] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:34] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:36] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:39] [FAIL] cgqrf052 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:41] [FAIL] cgqrf052 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:45] [FAIL] 13863876998 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:48] [FAIL] 13863876998 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:50] [FAIL] 13863876998 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:53] [FAIL] 13863876998 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:55] [FAIL] 13863876998 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:44:57] [FAIL] 13863876998 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:00] [FAIL] 17591937133 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:02] [FAIL] 17591937133 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:05] [FAIL] 17591937133 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:07] [FAIL] 17591937133 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:10] [FAIL] 17591937133 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:12] [FAIL] 17591937133 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:15] [FAIL] 17591937133 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:17] [FAIL] 14605263038 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:19] [FAIL] 14605263038 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:45:21] [FAIL] 14605263038 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:28] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:32] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:35] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:38] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:40] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:42] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:44] [FAIL] ustanovkamatch -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:46] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:48] [FAIL] cgqrf052 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:51] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:54] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:46:57] [FAIL] cgqrf052 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:00] [FAIL] cgqrf052 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:02] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:04] [FAIL] cgqrf052 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:07] [FAIL] 13863876998 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:09] [FAIL] 13863876998 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:13] [FAIL] 13863876998 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:16] [FAIL] 13863876998 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:19] [FAIL] 13863876998 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:21] [FAIL] 13863876998 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:23] [FAIL] 13863876998 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:26] [FAIL] 17591937133 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:29] [FAIL] 17591937133 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:31] [FAIL] 17591937133 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:33] [FAIL] 17591937133 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:47:36] [FAIL] 17591937133 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:49:48] [FAIL] ustanovkamatch -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:49:51] [FAIL] ustanovkamatch -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:49:53] [FAIL] ustanovkamatch -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:49:57] [FAIL] ustanovkamatch -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:49:59] [FAIL] ustanovkamatch -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:02] [FAIL] ustanovkamatch -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:04] [FAIL] cgqrf052 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:06] [FAIL] cgqrf052 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:09] [FAIL] cgqrf052 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:12] [FAIL] cgqrf052 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:14] [FAIL] cgqrf052 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:16] [FAIL] cgqrf052 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:17] [FAIL] cgqrf052 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:21] [FAIL] 13863876998 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:23] [FAIL] 13863876998 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:26] [FAIL] 13863876998 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:28] [FAIL] 13863876998 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:31] [FAIL] 13863876998 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:33] [FAIL] 13863876998 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:37] [FAIL] 13863876998 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:38] [FAIL] 13863876998 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:41] [FAIL] 17591937133 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:43] [FAIL] 17591937133 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:47] [FAIL] 17591937133 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:48] [FAIL] 17591937133 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:51] [FAIL] 17591937133 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:53] [FAIL] 17591937133 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:56] [FAIL] 17591937133 -> failed to add 13309240617: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:50:58] [FAIL] 17591937133 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:01] [FAIL] 14605263038 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:03] [FAIL] 14605263038 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:06] [FAIL] 14605263038 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:10] [FAIL] 14605263038 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:12] [FAIL] 14605263038 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:14] [FAIL] 13919708704 -> failed to add 13863876998: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:17] [FAIL] 13919708704 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:20] [FAIL] 13919708704 -> failed to add cgqrf052: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:22] [FAIL] 13919708704 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:24] [FAIL] 13919708704 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:27] [FAIL] 13919708704 -> failed to add mb6171912: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:30] [FAIL] 13919708704 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:32] [FAIL] 13309240617 -> failed to add 13061588458: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:35] [FAIL] 13309240617 -> failed to add 17591937133: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:37] [FAIL] 13309240617 -> failed to add 14605263038: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:41] [FAIL] 13309240617 -> failed to add ustanovkamatch: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:51:45] [FAIL] 13309240617 -> failed to add 13919708704: HTTP 400: false [Bad request — possibly invalid SteamID or limited account]
+[2026-03-04 21:54:55] [FAIL] 14605263038 failed to accept ustanovkamatch: 'bool' object has no attribute 'get'
+[2026-03-04 21:54:57] [FAIL] cgqrf052 failed to accept ustanovkamatch: 'bool' object has no attribute 'get'
+[2026-03-04 21:55:00] [FAIL] 13309240617 failed to accept ustanovkamatch: 'bool' object has no attribute 'get'
+[2026-03-04 21:55:04] [FAIL] mb6171912 failed to accept ustanovkamatch: 'bool' object has no attribute 'get'
+[2026-03-04 21:55:06] [FAIL] 13863876998 failed to accept ustanovkamatch: 'bool' object has no attribute 'get'
+[2026-03-04 21:56:16] [13919708704] Auth response: client_id=2715514294108761985, steamid=76561199781352836, confirmations=[{'confirmation_type': 3}, {'confirmation_type': 4}]
+[2026-03-04 21:56:25] [WARN] ustanovkamatch: 13863876998 already friend, replacement also friend — skipping
+[2026-03-04 21:57:07] [WARN] 17591937133: ustanovkamatch already friend, replacement also friend — skipping
+[2026-03-04 21:57:19] [WARN] 14605263038: cgqrf052 already friend, replacement also friend — skipping
+[2026-03-04 21:57:31] [WARN] 13919708704: 13863876998 already friend, replacement also friend — skipping
+[2026-03-04 21:57:31] [WARN] 13919708704: cgqrf052 already friend, replacement also friend — skipping
+[2026-03-04 21:57:46] [WARN] 13061588458: 13863876998 already friend, replacement also friend — skipping
+[2026-03-04 21:57:52] [WARN] mb6171912: 13863876998 already friend, replacement also friend — skipping
+[2026-03-04 22:05:22] [ustanovkamatch] Auth response: client_id=676343463429728107, steamid=76561198734452957, confirmations=[{'confirmation_type': 3}, {'confirmation_type': 4}]
+[2026-03-04 22:05:22] [ustanovkamatch] Auth response: client_id=676343463429728107, steamid=76561198734452957, confirmations=[{'confirmation_type': 3}, {'confirmation_type': 4}]
+[2026-03-04 22:05:56] [FAIL] mb6171912: 'list' object has no attribute 'items'
+[2026-03-04 22:05:56] [FAIL] mb6171912: 'list' object has no attribute 'items'
+[2026-03-04 22:06:51] [RETRY] 14605263038: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:06:51] [RETRY] 14605263038: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:06:51] [FAIL] 14605263038: Failed to load profile edit page: 429
+[2026-03-04 22:06:51] [FAIL] 14605263038: Failed to load profile edit page: 429
+[2026-03-04 22:06:52] [13919708704] Auth response: client_id=10842376442935194924, steamid=76561199781352836, confirmations=[{'confirmation_type': 3}, {'confirmation_type': 4}]
+[2026-03-04 22:06:52] [13919708704] Auth response: client_id=10842376442935194924, steamid=76561199781352836, confirmations=[{'confirmation_type': 3}, {'confirmation_type': 4}]
+[2026-03-04 22:06:54] [RETRY] 13919708704: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:06:54] [RETRY] 13919708704: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:06:54] [FAIL] 13919708704: Failed to load profile edit page: 429
+[2026-03-04 22:06:54] [FAIL] 13919708704: Failed to load profile edit page: 429
+[2026-03-04 22:06:56] [RETRY] 13309240617: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:06:56] [RETRY] 13309240617: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:06:56] [FAIL] 13309240617: Failed to load profile edit page: 429
+[2026-03-04 22:06:56] [FAIL] 13309240617: Failed to load profile edit page: 429
+[2026-03-04 22:06:59] [RETRY] 13061588458: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:06:59] [RETRY] 13061588458: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:06:59] [FAIL] 13061588458: Failed to load profile edit page: 429
+[2026-03-04 22:06:59] [FAIL] 13061588458: Failed to load profile edit page: 429
+[2026-03-04 22:07:02] [RETRY] mb6171912: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:07:02] [RETRY] mb6171912: Failed to load profile edit page: 429 (attempt 1/1)
+[2026-03-04 22:07:02] [FAIL] mb6171912: Failed to load profile edit page: 429
+[2026-03-04 22:07:02] [FAIL] mb6171912: Failed to load profile edit page: 429
+[2026-03-04 22:08:02] [RETRY] mb6171912: Auth polling timed out (Steam didn't confirm login) (attempt 1/1)
+[2026-03-04 22:08:02] [RETRY] mb6171912: Auth polling timed out (Steam didn't confirm login) (attempt 1/1)
+[2026-03-04 22:08:02] [FAIL] mb6171912: Auth polling timed out (Steam didn't confirm login)
+[2026-03-04 22:08:02] [FAIL] mb6171912: Auth polling timed out (Steam didn't confirm login)
+[2026-03-04 22:08:05] [FAIL] ustanovkamatch: No groups found in search
+[2026-03-04 22:08:05] [FAIL] ustanovkamatch: No groups found in search
+[2026-03-04 22:08:06] [cgqrf052] 2FA response: HTTP 429
+[2026-03-04 22:08:06] [cgqrf052] 2FA response: HTTP 429
+[2026-03-04 22:08:06] [RETRY] cgqrf052: 2FA rejected: HTTP 429, body: {'response': {'agreement_session_url': ''}} (attempt 1/1)
+[2026-03-04 22:08:06] [RETRY] cgqrf052: 2FA rejected: HTTP 429, body: {'response': {'agreement_session_url': ''}} (attempt 1/1)
+[2026-03-04 22:08:06] [FAIL] cgqrf052: 2FA rejected: HTTP 429, body: {'response': {'agreement_session_url': ''}}
+[2026-03-04 22:08:06] [FAIL] cgqrf052: 2FA rejected: HTTP 429, body: {'response': {'agreement_session_url': ''}}
+[2026-03-04 22:08:07] [RETRY] 13863876998: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:07] [RETRY] 13863876998: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:07] [FAIL] 13863876998: BeginAuthSession HTTP 429
+[2026-03-04 22:08:07] [FAIL] 13863876998: BeginAuthSession HTTP 429
+[2026-03-04 22:08:08] [RETRY] 17591937133: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:08] [RETRY] 17591937133: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:08] [FAIL] 17591937133: BeginAuthSession HTTP 429
+[2026-03-04 22:08:08] [FAIL] 17591937133: BeginAuthSession HTTP 429
+[2026-03-04 22:08:09] [RETRY] 14605263038: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:09] [RETRY] 14605263038: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:09] [FAIL] 14605263038: BeginAuthSession HTTP 429
+[2026-03-04 22:08:09] [FAIL] 14605263038: BeginAuthSession HTTP 429
+[2026-03-04 22:08:10] [RETRY] 13919708704: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:10] [RETRY] 13919708704: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:10] [FAIL] 13919708704: BeginAuthSession HTTP 429
+[2026-03-04 22:08:10] [FAIL] 13919708704: BeginAuthSession HTTP 429
+[2026-03-04 22:08:11] [RETRY] 13309240617: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:11] [RETRY] 13309240617: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:11] [FAIL] 13309240617: BeginAuthSession HTTP 429
+[2026-03-04 22:08:11] [FAIL] 13309240617: BeginAuthSession HTTP 429
+[2026-03-04 22:08:12] [RETRY] 13061588458: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:12] [RETRY] 13061588458: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:12] [FAIL] 13061588458: BeginAuthSession HTTP 429
+[2026-03-04 22:08:12] [FAIL] 13061588458: BeginAuthSession HTTP 429
+[2026-03-04 22:08:13] [RETRY] mb6171912: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:13] [RETRY] mb6171912: BeginAuthSession HTTP 429 (attempt 1/1)
+[2026-03-04 22:08:13] [FAIL] mb6171912: BeginAuthSession HTTP 429
+[2026-03-04 22:08:13] [FAIL] mb6171912: BeginAuthSession HTTP 429
+[2026-03-04 22:17:37] [FAIL] cgqrf052: login failed: BeginAuthSession HTTP 429
+[2026-03-04 22:17:37] [FAIL] cgqrf052: login failed: BeginAuthSession HTTP 429
+[2026-03-04 22:26:14] [FAIL] cgqrf052 (Create Community): Group creation failed: page contains error
+[2026-03-04 22:32:38] [ERROR] No actions selected.
+[2026-03-04 22:32:45] [FAIL] cgqrf052 (Create Community): Group creation failed: stayed on create page
+[2026-03-04 22:36:13] [ERROR] No actions selected.
+[2026-03-04 22:36:20]   [DEBUG] Error message: Ошибка
+[2026-03-04 22:36:20] [FAIL] cgqrf052 (Create Community): Group creation failed: Ошибка
+[2026-03-04 22:39:09]   [DEBUG] Error details: Ошибка
+[2026-03-04 22:39:09] [FAIL] cgqrf052 (Create Community): Group creation failed: Ошибка
+[2026-03-05 15:04:04] [ERROR] Need at least 2 selected accounts.
+[2026-03-05 15:04:16]   [DEBUG] Error page text lines:
+[2026-03-05 15:04:16]     Steam Community :: Error
+[2026-03-05 15:04:16] [FAIL] cgqrf052 (Create Community): Cannot create groups on this account (Steam returned error page)
+[2026-03-06 10:17:56] [FAIL] cgqrf052: Create group #1: Create page error: AlphaRaven7220 | Открыть профиль | Кошелёк (5.973,35₫) | Уведомления | Рекомендации
+[2026-03-06 10:17:56] [FAIL] cgqrf052 (Create Community): Could not create any groups (account may be limited)
+[2026-03-06 10:20:21] [FAIL] cgqrf052: Create group #1: Create page error: AlphaRaven7220 | Открыть профиль | Кошелёк (5.973,35₫) | Уведомления | Рекомендации
+[2026-03-06 10:20:21] [FAIL] cgqrf052 (Create Community): Could not create any groups (account may be limited)
+[2026-03-06 10:22:55]   [DEBUG] Tried https://steamcommunity.com/groups/!create/: HTTP 200, title=Steam Community :: Error
+[2026-03-06 10:22:56] [FAIL] cgqrf052: Create group #1: Рекомендации | Список желаемого | Предметы за очки | Торговая площадка | AlphaRaven7220
+[2026-03-06 10:22:56] [FAIL] cgqrf052 (Create Community): Could not create any groups (account may be limited)
+[2026-03-06 10:24:33]   [DEBUG] Tried https://steamcommunity.com/groups/!create/: HTTP 200, title=Steam Community :: Error
+[2026-03-06 10:24:35] [FAIL] cgqrf052: Create group #1: Рекомендации | Список желаемого | Предметы за очки | Торговая площадка | AlphaRaven7220
+[2026-03-06 10:24:35] [FAIL] cgqrf052 (Create Community): Could not create any groups (account may be limited)
+[2026-03-06 10:26:33]   [DEBUG] Tried https://steamcommunity.com/groups/!create/: HTTP 200, title=Steam Community :: Error
+[2026-03-06 10:26:33] [FAIL] cgqrf052: Create group #1: DIAGNOSTIC STOP — check logs for form fields
+[2026-03-06 10:26:33] [FAIL] cgqrf052 (Create Community): Could not create any groups (account may be limited)
+[2026-03-06 18:52:22] [FAIL] ustanovkamatch: Create group #1: BlazeSpartan4195 | Install Steam | BlazeSpartan4195 | View my profile | ustanovkamatch
+[2026-03-06 18:52:24] [FAIL] ustanovkamatch: Create group #2: BlazeSpartan4195 | Install Steam | BlazeSpartan4195 | View my profile | ustanovkamatch
+[2026-03-06 18:52:43] [FAIL] cgqrf052: Create group #1: Рекомендации | Список желаемого | Предметы за очки | Торговая площадка | AlphaRaven7220
+[2026-03-06 18:52:51] [FAIL] cgqrf052: Join officialindiegala: Group page is an error: AlphaRaven7220 | Открыть профиль | Кошелёк (5.973,35₫) | Уведомления | Рекомендации
+[2026-03-06 18:52:52] [FAIL] cgqrf052: Join Valve: AlphaRaven7220 | Открыть профиль | Кошелёк (5.973,35₫) | Уведомления | Рекомендации
+[2026-03-06 18:53:08] [FAIL] 13863876998: Create group #2: Steam 社区 :: 创建组 | SilentKnight5709 | SilentKnight5709 | 13863876998 | български（保加利亚语）
+[2026-03-06 18:53:34] [FAIL] 17591937133: Create group #3: Steam 社区 :: 创建组 | StormHawk172 | StormHawk172 | 17591937133 | български（保加利亚语）
+[2026-03-06 18:53:49] [FAIL] 14605263038: Create group #2: Steam 社区 :: 创建组 | AzureWolf7553 | AzureWolf7553 | 14605263038 | български（保加利亚语）
+[2026-03-06 18:53:53] [FAIL] 14605263038 (Join Community): Could not join any groups
+[2026-03-06 18:54:02] [FAIL] 13919708704: Create group #1: Steam 社区 :: 创建组 | IronAngel1519 | IronAngel1519 | 13919708704 | български（保加利亚语）
+[2026-03-06 18:54:08] [FAIL] 13919708704 (Join Community): Could not join any groups
+[2026-03-06 18:54:17] [FAIL] 13309240617: Create group #1: Steam 社区 :: 创建组 | VoidNinja9257 | VoidNinja9257 | 13309240617 | български（保加利亚语）
+[2026-03-06 18:54:18] [FAIL] 13309240617: Create group #2: Steam 社区 :: 创建组 | VoidNinja9257 | VoidNinja9257 | 13309240617 | български（保加利亚语）
+[2026-03-06 18:54:21] [FAIL] 13309240617: Create group #4: Steam 社区 :: 创建组 | VoidNinja9257 | VoidNinja9257 | 13309240617 | български（保加利亚语）
+[2026-03-06 18:54:25] [FAIL] 13309240617 (Join Community): Could not join any groups
+[2026-03-06 18:54:35] [FAIL] 13061588458: Create group #1: Steam 社区 :: 创建组 | RogueSpartan4940 | RogueSpartan4940 | 13061588458 | български（保加利亚语）
+[2026-03-06 18:54:38] [FAIL] 13061588458: Create group #3: Steam 社区 :: 创建组 | RogueSpartan4940 | RogueSpartan4940 | 13061588458 | български（保加利亚语）
+[2026-03-06 18:54:39] [FAIL] 13061588458 (Join Community): Could not join any groups
+[2026-03-06 18:54:48] [FAIL] mb6171912: Create group #1: Steam 社区 :: 创建组 | RapidTitan9666 | RapidTitan9666 | български（保加利亚语） | Čeština（捷克语）
+[2026-03-06 18:54:53] [FAIL] mb6171912 (Join Community): Could not join any groups
+[2026-03-06 19:06:11] [ERROR] No proxies loaded. Reload first.
+[2026-03-06 19:06:27] [ERROR] No proxies loaded. Reload first.
+[2026-03-06 19:06:28] [ERROR] No proxies loaded. Reload first.
+[2026-03-06 19:45:10] [FAIL] Proxy 33/1000: api7570d758eb76cf5f_c_UA_s_32:TnD4uBj6@gate.node-proxy.com:10032 — not working
+[2026-03-06 19:46:05] [FAIL] Proxy 50/1000: api7570d758eb76cf5f_c_UA_s_49:TnD4uBj6@gate.node-proxy.com:10049 — not working
+[2026-03-06 19:47:00] [FAIL] Proxy 75/1000: api7570d758eb76cf5f_c_UA_s_74:TnD4uBj6@gate.node-proxy.com:10074 — not working
+[2026-03-06 19:47:17] [FAIL] Proxy 81/1000: api7570d758eb76cf5f_c_UA_s_80:TnD4uBj6@gate.node-proxy.com:10080 — not working
+[2026-03-06 19:48:07] [FAIL] Proxy 109/1000: api7570d758eb76cf5f_c_UA_s_108:TnD4uBj6@gate.node-proxy.com:10108 — not working
+[2026-03-06 19:48:33] [FAIL] Proxy 116/1000: api7570d758eb76cf5f_c_UA_s_115:TnD4uBj6@gate.node-proxy.com:10115 — not working
+[2026-03-06 19:48:44] [FAIL] Proxy 118/1000: api7570d758eb76cf5f_c_UA_s_117:TnD4uBj6@gate.node-proxy.com:10117 — not working
+[2026-03-06 19:49:15] [FAIL] Proxy 128/1000: api7570d758eb76cf5f_c_UA_s_127:TnD4uBj6@gate.node-proxy.com:10127 — not working
+[2026-03-06 19:50:08] [FAIL] Proxy 143/1000: api7570d758eb76cf5f_c_UA_s_142:TnD4uBj6@gate.node-proxy.com:10142 — not working
+[2026-03-06 19:50:35] [FAIL] Proxy 154/1000: api7570d758eb76cf5f_c_UA_s_153:TnD4uBj6@gate.node-proxy.com:10153 — not working
+[2026-03-06 19:51:15] [FAIL] Proxy 169/1000: api7570d758eb76cf5f_c_UA_s_168:TnD4uBj6@gate.node-proxy.com:10168 — not working
+[2026-03-06 19:51:39] [FAIL] Proxy 176/1000: api7570d758eb76cf5f_c_UA_s_175:TnD4uBj6@gate.node-proxy.com:10175 — not working
+[2026-03-06 19:52:11] [FAIL] Proxy 189/1000: api7570d758eb76cf5f_c_UA_s_188:TnD4uBj6@gate.node-proxy.com:10188 — not working
+[2026-03-06 19:52:36] [FAIL] Proxy 199/1000: api7570d758eb76cf5f_c_UA_s_198:TnD4uBj6@gate.node-proxy.com:10198 — not working
+[2026-03-06 19:52:57] [FAIL] Proxy 205/1000: api7570d758eb76cf5f_c_UA_s_204:TnD4uBj6@gate.node-proxy.com:10204 — not working
+[2026-03-06 19:53:07] [FAIL] Proxy 206/1000: api7570d758eb76cf5f_c_UA_s_205:TnD4uBj6@gate.node-proxy.com:10205 — not working
+[2026-03-06 19:53:17] [FAIL] Proxy 207/1000: api7570d758eb76cf5f_c_UA_s_206:TnD4uBj6@gate.node-proxy.com:10206 — not working
+[2026-03-06 19:53:28] [FAIL] Proxy 209/1000: api7570d758eb76cf5f_c_UA_s_208:TnD4uBj6@gate.node-proxy.com:10208 — not working
+[2026-03-06 19:53:56] [FAIL] Proxy 218/1000: api7570d758eb76cf5f_c_UA_s_217:TnD4uBj6@gate.node-proxy.com:10217 — not working
+[2026-03-06 19:54:13] [FAIL] Proxy 223/1000: api7570d758eb76cf5f_c_UA_s_222:TnD4uBj6@gate.node-proxy.com:10222 — not working
+[2026-03-06 19:55:07] [FAIL] Proxy 235/1000: api7570d758eb76cf5f_c_UA_s_234:TnD4uBj6@gate.node-proxy.com:10234 — not working
+[2026-03-06 19:55:19] [FAIL] Proxy 242/1000: api7570d758eb76cf5f_c_UA_s_241:TnD4uBj6@gate.node-proxy.com:10241 — not working
+[2026-03-06 19:56:40] [FAIL] Proxy 272/1000: api7570d758eb76cf5f_c_UA_s_271:TnD4uBj6@gate.node-proxy.com:10271 — not working
+[2026-03-06 19:58:15] [FAIL] Proxy 310/1000: api7570d758eb76cf5f_c_UA_s_309:TnD4uBj6@gate.node-proxy.com:10309 — not working
+[2026-03-06 19:59:13] [FAIL] Proxy 335/1000: api7570d758eb76cf5f_c_UA_s_334:TnD4uBj6@gate.node-proxy.com:10334 — not working
+[2026-03-06 19:59:43] [FAIL] Proxy 345/1000: api7570d758eb76cf5f_c_UA_s_344:TnD4uBj6@gate.node-proxy.com:10344 — not working
+[2026-03-06 19:59:56] [FAIL] Proxy 348/1000: api7570d758eb76cf5f_c_UA_s_347:TnD4uBj6@gate.node-proxy.com:10347 — not working
+[2026-03-06 20:00:36] [FAIL] Proxy 358/1000: api7570d758eb76cf5f_c_UA_s_357:TnD4uBj6@gate.node-proxy.com:10357 — not working
+[2026-03-06 20:01:04] [FAIL] Proxy 368/1000: api7570d758eb76cf5f_c_UA_s_367:TnD4uBj6@gate.node-proxy.com:10367 — not working
+[2026-03-06 20:01:27] [FAIL] Proxy 377/1000: api7570d758eb76cf5f_c_UA_s_376:TnD4uBj6@gate.node-proxy.com:10376 — not working
+[2026-03-06 20:01:42] [FAIL] Proxy 381/1000: api7570d758eb76cf5f_c_UA_s_380:TnD4uBj6@gate.node-proxy.com:10380 — not working
+[2026-03-06 20:02:11] [FAIL] Proxy 394/1000: api7570d758eb76cf5f_c_UA_s_393:TnD4uBj6@gate.node-proxy.com:10393 — not working
+[2026-03-06 20:02:33] [FAIL] Proxy 403/1000: api7570d758eb76cf5f_c_UA_s_402:TnD4uBj6@gate.node-proxy.com:10402 — not working
+[2026-03-06 20:03:05] [FAIL] Proxy 413/1000: api7570d758eb76cf5f_c_UA_s_412:TnD4uBj6@gate.node-proxy.com:10412 — not working
+[2026-03-06 20:03:58] [FAIL] Proxy 435/1000: api7570d758eb76cf5f_c_UA_s_434:TnD4uBj6@gate.node-proxy.com:10434 — not working
+[2026-03-06 20:04:54] [FAIL] Proxy 456/1000: api7570d758eb76cf5f_c_UA_s_455:TnD4uBj6@gate.node-proxy.com:10455 — not working
+[2026-03-06 20:06:05] [FAIL] Proxy 475/1000: api7570d758eb76cf5f_c_UA_s_474:TnD4uBj6@gate.node-proxy.com:10474 — not working
+[2026-03-06 20:06:20] [FAIL] Proxy 479/1000: api7570d758eb76cf5f_c_UA_s_478:TnD4uBj6@gate.node-proxy.com:10478 — not working
+[2026-03-06 20:07:29] [FAIL] Proxy 507/1000: api7570d758eb76cf5f_c_UA_s_506:TnD4uBj6@gate.node-proxy.com:10506 — not working
+[2026-03-06 20:08:30] [FAIL] Proxy 537/1000: api7570d758eb76cf5f_c_UA_s_536:TnD4uBj6@gate.node-proxy.com:10536 — not working
+[2026-03-06 20:09:08] [FAIL] Proxy 554/1000: api7570d758eb76cf5f_c_UA_s_553:TnD4uBj6@gate.node-proxy.com:10553 — not working
+[2026-03-06 20:09:23] [FAIL] Proxy 558/1000: api7570d758eb76cf5f_c_UA_s_557:TnD4uBj6@gate.node-proxy.com:10557 — not working
+[2026-03-06 20:10:09] [FAIL] Proxy 586/1000: api7570d758eb76cf5f_c_UA_s_585:TnD4uBj6@gate.node-proxy.com:10585 — not working
+[2026-03-06 20:10:58] [FAIL] Proxy 614/1000: api7570d758eb76cf5f_c_UA_s_613:TnD4uBj6@gate.node-proxy.com:10613 — not working
+[2026-03-06 20:11:08] [FAIL] Proxy 615/1000: api7570d758eb76cf5f_c_UA_s_614:TnD4uBj6@gate.node-proxy.com:10614 — not working
+[2026-03-06 20:11:47] [FAIL] Proxy 630/1000: api7570d758eb76cf5f_c_UA_s_629:TnD4uBj6@gate.node-proxy.com:10629 — not working
+[2026-03-06 20:12:12] [FAIL] Proxy 642/1000: api7570d758eb76cf5f_c_UA_s_641:TnD4uBj6@gate.node-proxy.com:10641 — not working
+[2026-03-06 20:13:10] [FAIL] Proxy 670/1000: api7570d758eb76cf5f_c_UA_s_669:TnD4uBj6@gate.node-proxy.com:10669 — not working
+[2026-03-06 20:13:21] [FAIL] Proxy 672/1000: api7570d758eb76cf5f_c_UA_s_671:TnD4uBj6@gate.node-proxy.com:10671 — not working
+[2026-03-06 20:14:06] [FAIL] Proxy 690/1000: api7570d758eb76cf5f_c_UA_s_689:TnD4uBj6@gate.node-proxy.com:10689 — not working
+[2026-03-06 20:14:41] [FAIL] Proxy 708/1000: api7570d758eb76cf5f_c_UA_s_707:TnD4uBj6@gate.node-proxy.com:10707 — not working
+[2026-03-06 20:15:32] [FAIL] Proxy 736/1000: api7570d758eb76cf5f_c_UA_s_735:TnD4uBj6@gate.node-proxy.com:10735 — not working
+[2026-03-06 20:17:03] [FAIL] Proxy 784/1000: api7570d758eb76cf5f_c_UA_s_783:TnD4uBj6@gate.node-proxy.com:10783 — not working
+[2026-03-06 20:17:18] [FAIL] Proxy 789/1000: api7570d758eb76cf5f_c_UA_s_788:TnD4uBj6@gate.node-proxy.com:10788 — not working
+[2026-03-06 20:17:43] [FAIL] Proxy 801/1000: api7570d758eb76cf5f_c_UA_s_800:TnD4uBj6@gate.node-proxy.com:10800 — not working
+[2026-03-06 20:19:09] [FAIL] Proxy 837/1000: api7570d758eb76cf5f_c_UA_s_836:TnD4uBj6@gate.node-proxy.com:10836 — not working
+[2026-03-06 20:19:27] [FAIL] Proxy 843/1000: api7570d758eb76cf5f_c_UA_s_842:TnD4uBj6@gate.node-proxy.com:10842 — not working
+[2026-03-06 20:19:40] [FAIL] Proxy 846/1000: api7570d758eb76cf5f_c_UA_s_845:TnD4uBj6@gate.node-proxy.com:10845 — not working
+[2026-03-06 20:19:58] [FAIL] Proxy 848/1000: api7570d758eb76cf5f_c_UA_s_847:TnD4uBj6@gate.node-proxy.com:10847 — not working
+[2026-03-06 20:21:15] [FAIL] Proxy 889/1000: api7570d758eb76cf5f_c_UA_s_888:TnD4uBj6@gate.node-proxy.com:10888 — not working
+[2026-03-06 20:21:35] [FAIL] Proxy 898/1000: api7570d758eb76cf5f_c_UA_s_897:TnD4uBj6@gate.node-proxy.com:10897 — not working
+[2026-03-06 20:21:59] [FAIL] Proxy 909/1000: api7570d758eb76cf5f_c_UA_s_908:TnD4uBj6@gate.node-proxy.com:10908 — not working
+[2026-03-06 20:22:39] [FAIL] Proxy 928/1000: api7570d758eb76cf5f_c_UA_s_927:TnD4uBj6@gate.node-proxy.com:10927 — not working
+[2026-03-06 20:22:59] [FAIL] Proxy 936/1000: api7570d758eb76cf5f_c_UA_s_935:TnD4uBj6@gate.node-proxy.com:10935 — not working
+[2026-03-06 20:23:53] [FAIL] Proxy 962/1000: api7570d758eb76cf5f_c_UA_s_961:TnD4uBj6@gate.node-proxy.com:10961 — not working

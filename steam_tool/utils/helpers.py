@@ -24,8 +24,48 @@ def random_string(length: int = 10) -> str:
 
 def random_nickname() -> str:
     data = _load_json("nicknames.json")
-    number = random.randint(0, 9999)
-    return f"{random.choice(data['adjectives'])}{random.choice(data['nouns'])}{number}"
+    template = random.randint(1, 5)
+
+    if template == 1:
+        # прилагательное + существительное
+        t = data["template1"]
+        adj = random.choice(t["adjectives"])
+        noun = random.choice(t["nouns"])
+        return f"{adj} {noun}"
+
+    elif template == 2:
+        # звание/роль + область
+        t = data["template2"]
+        role = random.choice(t["roles"])
+        domain = random.choice(t["domains"])
+        return f"{role} {domain}"
+
+    elif template == 3:
+        # одно мемное слово
+        word = random.choice(data["template3"]["words"])
+        if random.random() < 0.4:
+            word += str(random.randint(1, 9999))
+        return word
+
+    elif template == 4:
+        # мемная фраза (с подстановкой чисел)
+        phrase = random.choice(data["template4"]["phrases"])
+        n = random.choice([18, 19, 20, 21, 228, 322, 1337, 2003, 2005, 2007,
+                           30, 50, 100, 150, 200, 300, 500, 666, 777, 1488])
+        return phrase.replace("{n}", str(n))
+
+    else:
+        # кличка/имя + цифры
+        name = random.choice(data["template5"]["names"])
+        digits = random.choice([
+            str(random.randint(0, 99)),
+            str(random.randint(100, 999)),
+            str(random.randint(1, 9999)),
+            "228", "1337", "777", "666", "228",
+            "2003", "2004", "2005", "2006", "2007",
+            "007", "008", "013", "096", "174",
+        ])
+        return f"{name}{digits}"
 
 
 def random_group_name() -> str:

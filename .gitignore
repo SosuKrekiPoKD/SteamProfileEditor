@@ -1,0 +1,17 @@
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Data files with sensitive info
+steam_tool/data/accounts.txt
+steam_tool/data/proxies.txt
+steam_tool/data/mafiles/
+steam_tool/data/logs.txt
+steam_tool/data/errors.txt

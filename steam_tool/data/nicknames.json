@@ -1,0 +1,12 @@
+{
+  "adjectives": [
+    "Shadow", "Dark", "Neon", "Cyber", "Toxic", "Frost", "Storm", "Blaze",
+    "Ghost", "Iron", "Pixel", "Rapid", "Silent", "Crimson", "Azure", "Void",
+    "Omega", "Alpha", "Nova", "Lunar", "Solar", "Mystic", "Rogue", "Elite"
+  ],
+  "nouns": [
+    "Wolf", "Eagle", "Hawk", "Viper", "Knight", "Ninja", "Samurai", "Hunter",
+    "Reaper", "Phantom", "Dragon", "Tiger", "Panther", "Cobra", "Falcon",
+    "Spartan", "Titan", "Phoenix", "Raven", "Scorpion", "Demon", "Angel"
+  ]
+}

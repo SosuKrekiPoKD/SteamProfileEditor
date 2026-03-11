@@ -55,22 +55,30 @@ class LogWidget(QPlainTextEdit):
         self._write_to_file(self._log_file, message)
         self._write_to_file(self._error_file, message)
 
+    @pyqtSlot(str)
+    def append_info(self, message: str):
+        self._append_colored(message, QColor("#4499ff"))
+        self._write_to_file(self._log_file, message)
+
     def smart_log(self, message: str):
         msg_lower = message.lower()
 
-        error_keywords = [
-            "[fail]", "[error]", "[warn]", "failed", "error", "timeout",
-            "refused", "denied", "timed out",
-            "429", "too many requests", "limited user",
-        ]
-        success_keywords = [
-            "[ok]", "[success]", "accepted", "updated", "uploaded",
-            "joined", "created", "logged in",
-        ]
-
-        if any(kw in msg_lower for kw in error_keywords):
+        # Priority 1: explicit tags (most reliable)
+        if "[fail]" in msg_lower or "[error]" in msg_lower or "[warn]" in msg_lower:
             self.append_error(message)
-        elif any(kw in msg_lower for kw in success_keywords):
+        elif "[ok]" in msg_lower or "[success]" in msg_lower:
+            self.append_success(message)
+        elif "[info]" in msg_lower or "[debug]" in msg_lower:
+            self.append_info(message)
+        # Priority 2: content-based keywords (fallback)
+        elif any(kw in msg_lower for kw in (
+            "failed", "error", "timeout", "refused", "denied", "timed out",
+            "http 429", "status 429", "too many requests", "limited user",
+        )):
+            self.append_error(message)
+        elif any(kw in msg_lower for kw in (
+            "accepted", "updated", "uploaded", "joined", "created", "logged in",
+        )):
             self.append_success(message)
         else:
             self.append_log(message)

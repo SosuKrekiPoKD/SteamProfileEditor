@@ -9,7 +9,8 @@ from core.proxy_manager import ProxyManager
 
 
 def add_friends_between_accounts(
-    accounts: list,
+    selected_accounts: list,
+    all_accounts: list,
     min_friends: int,
     max_friends: int,
     proxy_manager: Optional[ProxyManager] = None,
@@ -19,30 +20,44 @@ def add_friends_between_accounts(
     cancel_event=None,
 ):
     """
-    Add friends between loaded accounts.
+    Add friends to selected accounts from the full account pool.
 
-    Phase 1: Login ALL accounts first to get correct SteamID64s.
-    Phase 2: For each account, pick random friends and add them.
+    selected_accounts: accounts that RECEIVE friends
+    all_accounts: full pool of accounts that can become friends (includes selected)
+
+    Phase 1: Login all unique accounts (selected + potential friends).
+    Phase 2: For each selected account, pick random friends from the pool.
     """
-    if len(accounts) < 2:
+    if len(selected_accounts) < 1:
         if log_callback:
-            log_callback("[ERROR] Need at least 2 accounts for friend adding")
+            log_callback("[ERROR] Need at least 1 selected account")
+        return
+    if len(all_accounts) < 2:
+        if log_callback:
+            log_callback("[ERROR] Need at least 2 accounts in total for friend adding")
         return
 
-    total_accounts = len(accounts)
+    # Build unique list of all accounts to login (selected + pool)
+    all_unique = []
+    seen_usernames = set()
+    for acc in list(selected_accounts) + list(all_accounts):
+        if acc.username not in seen_usernames:
+            seen_usernames.add(acc.username)
+            all_unique.append(acc)
+
+    selected_usernames = {a.username for a in selected_accounts}
 
     # ===== PHASE 1: Login all accounts to get real SteamID64 =====
     if log_callback:
-        log_callback(f"=== Phase 1: Logging in {total_accounts} accounts ===")
+        log_callback(f"=== Phase 1: Logging in {len(all_unique)} accounts ===")
 
-    sessions = {}
-    real_steam_ids = {}  # index -> SteamID64
+    sessions = {}       # username -> SteamSession
+    real_steam_ids = {}  # username -> SteamID64
 
-    for idx in range(total_accounts):
+    for acc in all_unique:
         if cancel_event and cancel_event.is_set():
             return
 
-        acc = accounts[idx]
         proxy = None
         if use_proxies and proxy_manager:
             proxy = proxy_manager.acquire()
@@ -56,83 +71,97 @@ def add_friends_between_accounts(
                 log_callback=log_callback,
             )
             session.login()
-            sessions[idx] = session
-            real_steam_ids[idx] = session.steam_id
+            sessions[acc.username] = session
+            real_steam_ids[acc.username] = session.steam_id
             if log_callback:
                 log_callback(f"[OK] {acc.username} logged in (SteamID64: {session.steam_id})")
         except SteamAuthError as e:
             if log_callback:
                 log_callback(f"[FAIL] Login failed for {acc.username}: {_diagnose_error(str(e))}")
 
-    logged_in_indices = list(sessions.keys())
-    if len(logged_in_indices) < 2:
+    # Check we have enough logged-in accounts
+    logged_selected = [a for a in selected_accounts if a.username in sessions]
+    logged_pool = [a for a in all_unique if a.username in sessions]
+
+    if not logged_selected:
+        if log_callback:
+            log_callback("[ERROR] No selected accounts logged in")
+        return
+    if len(logged_pool) < 2:
         if log_callback:
             log_callback("[ERROR] Less than 2 accounts logged in, cannot add friends")
         return
 
     if log_callback:
-        log_callback(f"=== Phase 2: Adding friends ({len(logged_in_indices)} accounts online) ===")
+        log_callback(f"=== Phase 2: Adding friends ({len(logged_selected)} selected, "
+                     f"{len(logged_pool)} in pool) ===")
 
     # ===== PHASE 2: Add friends =====
     total_pairs = 0
     completed_pairs = 0
 
-    for i in logged_in_indices:
+    for acc in logged_selected:
         if cancel_event and cancel_event.is_set():
             break
 
-        acc = accounts[i]
-        session = sessions[i]
-        friend_count = random.randint(min_friends, min(max_friends, len(logged_in_indices) - 1))
+        session = sessions[acc.username]
+        # Pool candidates = all logged-in accounts except self
+        pool = [a for a in logged_pool if a.username != acc.username]
+        if not pool:
+            continue
+
+        friend_count = random.randint(min_friends, min(max_friends, len(pool)))
 
         if log_callback:
             log_callback(f"--- {acc.username}: adding {friend_count} friends ---")
 
-        # Get current friend list (only our accounts' SteamID64s)
+        # Get current friend list
         our_steam_ids = list(real_steam_ids.values())
         current_friends = _get_friends_from_list(session, our_steam_ids)
 
-        # Pick random targets (excluding self, only from logged-in accounts)
-        candidates = [j for j in logged_in_indices if j != i]
-        targets = random.sample(candidates, min(friend_count, len(candidates)))
+        # Pick random targets from pool
+        targets = random.sample(pool, min(friend_count, len(pool)))
 
         # Replace already-friended targets
         final_targets = []
-        used_indices = set(targets)
-        used_indices.add(i)
+        used_names = {t.username for t in targets}
+        used_names.add(acc.username)
 
         for t in targets:
-            target_sid = real_steam_ids.get(t, "")
+            target_sid = real_steam_ids.get(t.username, "")
             if target_sid and target_sid in current_friends:
-                replacement = _find_replacement(candidates, used_indices)
-                if replacement is not None:
-                    used_indices.add(replacement)
-                    repl_sid = real_steam_ids.get(replacement, "")
+                # Find replacement
+                available = [a for a in pool if a.username not in used_names]
+                if available:
+                    repl = random.choice(available)
+                    used_names.add(repl.username)
+                    repl_sid = real_steam_ids.get(repl.username, "")
                     if repl_sid and repl_sid in current_friends:
                         if log_callback:
                             log_callback(
-                                f"[WARN] {acc.username}: {accounts[t].username} already friend, "
+                                f"[WARN] {acc.username}: {t.username} already friend, "
                                 f"replacement also friend — skipping"
                             )
                         continue
-                    final_targets.append(replacement)
+                    final_targets.append(repl)
                     if log_callback:
                         log_callback(
-                            f"[INFO] {acc.username}: {accounts[t].username} already friend, "
-                            f"replaced with {accounts[replacement].username}"
+                            f"[INFO] {acc.username}: {t.username} already friend, "
+                            f"replaced with {repl.username}"
                         )
+                else:
+                    if log_callback:
+                        log_callback(f"[WARN] {acc.username}: {t.username} already friend, no replacement")
             else:
                 final_targets.append(t)
 
         total_pairs += len(final_targets)
 
-        for t_idx in final_targets:
+        for target in final_targets:
             if cancel_event and cancel_event.is_set():
                 break
 
-            target = accounts[t_idx]
-            target_sid = real_steam_ids.get(t_idx, "")
-
+            target_sid = real_steam_ids.get(target.username, "")
             if not target_sid:
                 if log_callback:
                     log_callback(f"[FAIL] {target.username}: no SteamID64")
@@ -141,16 +170,16 @@ def add_friends_between_accounts(
                     progress_callback(completed_pairs, total_pairs)
                 continue
 
-            # Send friend request using real SteamID64
+            # Send friend request
             success, err = _send_friend_request(session, target_sid, log_callback)
             if success:
                 if log_callback:
                     log_callback(f"[OK] {acc.username} -> sent request to {target.username}")
 
                 # Accept from target side
-                target_session = sessions.get(t_idx)
+                target_session = sessions.get(target.username)
                 if target_session:
-                    my_sid = real_steam_ids[i]
+                    my_sid = real_steam_ids[acc.username]
                     accepted, acc_err = _accept_friend_request(target_session, my_sid, log_callback)
                     if accepted:
                         if log_callback:

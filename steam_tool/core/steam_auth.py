@@ -212,41 +212,41 @@ class SteamSession:
     def _finalize_login(self, refresh_token: str, access_token: str):
         self.access_token = access_token
 
-        # Get WG token via IMobileAuthService (same approach as steam library)
-        wg_token = None
-        wg_token_secure = None
+        # Get initial sessionid cookie
+        session_id = self._get_session_id()
+
+        # JWT FinalizeLogin — sets proper steamLoginSecure cookies via transfers
         try:
             resp = self.session.post(
-                f"{self.API_URL}/IMobileAuthService/GetWGToken/v0001",
-                data={"access_token": access_token},
+                "https://login.steampowered.com/jwt/finalizelogin",
+                data={
+                    "nonce": refresh_token,
+                    "sessionid": session_id,
+                    "redir": "https://steamcommunity.com/login/home/?goto=",
+                },
                 timeout=15,
             )
-            if resp.status_code == 200:
-                wg = resp.json().get("response", {})
-                wg_token = wg.get("token", "")
-                wg_token_secure = wg.get("token_secure", "")
-                self._log(f"[{self.username}] WGToken: got token={bool(wg_token)}, secure={bool(wg_token_secure)}")
-            else:
-                self._log(f"[{self.username}] WGToken: HTTP {resp.status_code}")
-        except Exception as e:
-            self._log(f"[{self.username}] WGToken failed: {e}")
+            if resp.status_code != 200:
+                raise Exception(f"HTTP {resp.status_code}")
 
-        # Set cookies manually (like steam library does)
-        session_id = self._get_session_id()
-        for domain in ["steamcommunity.com", "store.steampowered.com", "help.steampowered.com"]:
-            self.session.cookies.set("sessionid", session_id, domain=domain)
-            if wg_token_secure:
-                self.session.cookies.set(
-                    "steamLoginSecure",
-                    f"{self.steam_id}%7C%7C{wg_token_secure}",
-                    domain=domain, secure=True,
-                )
-            if wg_token:
-                self.session.cookies.set(
-                    "steamLogin",
-                    f"{self.steam_id}%7C%7C{wg_token}",
-                    domain=domain,
-                )
+            finalize_data = resp.json()
+            transfer_info = finalize_data.get("transfer_info", [])
+            self._log(f"[{self.username}] FinalizeLogin: {len(transfer_info)} transfers")
+
+            for ti in transfer_info:
+                params = dict(ti["params"])
+                params["steamID"] = finalize_data["steamID"]
+                self.session.post(ti["url"], data=params, timeout=15)
+
+        except Exception as e:
+            self._log(f"[{self.username}] FinalizeLogin failed: {e}")
+            raise SteamAuthError(f"FinalizeLogin failed: {e}")
+
+        # Read sessionid from cookies (may have been updated by transfers)
+        for c in self.session.cookies:
+            if c.name == "sessionid" and "steamcommunity" in (c.domain or ""):
+                session_id = c.value
+                break
 
         has_secure = any(c.name == "steamLoginSecure" for c in self.session.cookies)
         self._log(f"[{self.username}] steamLoginSecure set: {has_secure}")
@@ -281,7 +281,12 @@ class SteamSession:
                 if cookie.name == "sessionid":
                     session_id = cookie.value
                     break
-        return session_id or ""
+        # Last resort: generate a random session_id (24 hex chars)
+        if not session_id:
+            import secrets
+            session_id = secrets.token_hex(12)
+            self._log(f"[{self.username}] Generated random sessionid")
+        return session_id
 
     def get(self, url: str, **kwargs) -> requests.Response:
         kwargs.setdefault("timeout", 15)

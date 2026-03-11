@@ -15,3 +15,32 @@ steam_tool/data/proxies.txt
 steam_tool/data/mafiles/
 steam_tool/data/logs.txt
 steam_tool/data/errors.txt
+
+# Root data directory
+data/accounts.txt
+data/proxies.txt
+data/mafiles/
+data/logs.txt
+data/errors.txt
+
+# Config (user settings)
+config.json
+
+# Generic patterns for logs, accounts, proxies, mafiles
+*.log
+*.mafile
+logs.txt
+errors.txt
+accounts.txt
+proxies.txt
+mafiles/
+
+# Test scripts
+test_*.py
+scrape_bios.py
+
+# Misc
+Calculator.app/
+Steam Guard.command
+steam_guard.py
+PLAN.md

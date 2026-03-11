@@ -1,3 +1,4 @@
+import json
 import os
 import subprocess
 import sys
@@ -8,9 +9,11 @@ import requests
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel,
     QSpinBox, QCheckBox, QGroupBox, QComboBox, QProgressBar,
+    QScrollArea,
 )
 from PyQt5.QtCore import pyqtSignal, QObject
 
+from core.account_manager import AccountManager
 from core.proxy_manager import ProxyManager
 
 
@@ -24,15 +27,27 @@ class _ProxyCheckSignals(QObject):
 class SettingsTab(QWidget):
     theme_changed = pyqtSignal(str)  # "dark" or "light"
 
-    def __init__(self, proxy_manager: ProxyManager, log_widget=None, parent=None):
+    def __init__(self, proxy_manager: ProxyManager, account_manager: AccountManager = None,
+                 log_widget=None, data_dir: str = None, parent=None):
         super().__init__(parent)
         self.proxy_manager = proxy_manager
+        self.account_manager = account_manager
         self.log_widget = log_widget
+        self._config_path = os.path.join(data_dir, "config.json") if data_dir else None
+        self._loading_config = False
         self._init_ui()
 
     def _init_ui(self):
-        layout = QVBoxLayout(self)
-        layout.setSpacing(12)
+        outer = QVBoxLayout(self)
+        outer.setContentsMargins(0, 0, 0, 0)
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QScrollArea.NoFrame)
+        scroll_content = QWidget()
+        layout = QVBoxLayout(scroll_content)
+        layout.setSpacing(10)
+        layout.setContentsMargins(10, 10, 10, 10)
 
         header = QLabel("Settings")
         header.setStyleSheet("font-size: 16px; font-weight: bold;")
@@ -51,6 +66,33 @@ class SettingsTab(QWidget):
 
         theme_group.setLayout(theme_layout)
         layout.addWidget(theme_group)
+
+        # Accounts group
+        acc_group = QGroupBox("Accounts")
+        acc_layout = QVBoxLayout()
+
+        acc_btn_row = QHBoxLayout()
+        self.btn_open_accounts = QPushButton("Open accounts.txt")
+        self.btn_open_accounts.clicked.connect(self._open_accounts_file)
+        acc_btn_row.addWidget(self.btn_open_accounts)
+
+        self.btn_open_mafiles = QPushButton("Open maFiles folder")
+        self.btn_open_mafiles.clicked.connect(self._open_mafiles_folder)
+        acc_btn_row.addWidget(self.btn_open_mafiles)
+
+        self.btn_refresh_accounts = QPushButton("Refresh accounts")
+        self.btn_refresh_accounts.setObjectName("successBtn")
+        self.btn_refresh_accounts.clicked.connect(self._refresh_accounts)
+        acc_btn_row.addWidget(self.btn_refresh_accounts)
+
+        acc_btn_row.addStretch()
+        acc_layout.addLayout(acc_btn_row)
+
+        self.label_accounts_status = QLabel("Accounts: 0")
+        acc_layout.addWidget(self.label_accounts_status)
+
+        acc_group.setLayout(acc_layout)
+        layout.addWidget(acc_group)
 
         # Threading group
         thread_group = QGroupBox("Threading & Proxies")
@@ -85,6 +127,10 @@ class SettingsTab(QWidget):
         row_delay.addWidget(self.spin_delay)
         row_delay.addStretch()
         thread_layout.addLayout(row_delay)
+
+        # Save settings on value changes
+        self.spin_threads.valueChanged.connect(self._save_config)
+        self.spin_delay.valueChanged.connect(self._save_config)
 
         # Proxy info
         row3 = QHBoxLayout()
@@ -132,6 +178,9 @@ class SettingsTab(QWidget):
 
         layout.addStretch()
 
+        scroll.setWidget(scroll_content)
+        outer.addWidget(scroll)
+
     def _on_theme_change(self, text: str):
         self.theme_changed.emit(text.lower())
 
@@ -139,6 +188,7 @@ class SettingsTab(QWidget):
         self.spin_threads.setEnabled(checked)
         if not checked:
             self.spin_threads.setValue(1)
+        self._save_config()
 
     def reload_proxies(self):
         count = self.proxy_manager.load()
@@ -195,31 +245,48 @@ class SettingsTab(QWidget):
         signals.finished.connect(_on_finished)
 
         def _run():
-            valid = 0
-            invalid = 0
+            from concurrent.futures import ThreadPoolExecutor, as_completed
+
             total = self.proxy_manager.count
-            # Reload to reset usage tracking
             self.proxy_manager.load()
 
+            # Build list of all proxies to check
+            proxies_to_check = []
             for i in range(total):
                 proxy = self.proxy_manager.acquire()
                 if proxy is None:
                     break
+                proxies_to_check.append((i, proxy))
 
+            valid = 0
+            invalid = 0
+            checked = 0
+            lock = threading.Lock()
+
+            def _check_one(item):
+                idx, proxy = item
                 ok = _test_proxy(proxy)
                 proxy_str = proxy.get("http", "?").replace("http://", "")
-                if ok:
-                    valid += 1
-                    signals.log_ok.emit(
-                        f"[OK] Proxy {i+1}/{total}: {proxy_str}"
-                    )
-                else:
-                    invalid += 1
-                    signals.log_fail.emit(
-                        f"[FAIL] Proxy {i+1}/{total}: {proxy_str} — not working"
-                    )
+                return idx, ok, proxy_str
 
-                signals.progress.emit(i + 1)
+            workers = min(20, total)
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                futures = {pool.submit(_check_one, item): item for item in proxies_to_check}
+                for future in as_completed(futures):
+                    idx, ok, proxy_str = future.result()
+                    with lock:
+                        checked += 1
+                        if ok:
+                            valid += 1
+                            signals.log_ok.emit(
+                                f"[OK] Proxy {idx+1}/{total}: {proxy_str}"
+                            )
+                        else:
+                            invalid += 1
+                            signals.log_fail.emit(
+                                f"[FAIL] Proxy {idx+1}/{total}: {proxy_str} — not working"
+                            )
+                        signals.progress.emit(checked)
 
             result_text = (
                 f"<span style='color: #00cc00;'>Valid: {valid}</span> | "
@@ -230,6 +297,81 @@ class SettingsTab(QWidget):
 
         thread = threading.Thread(target=_run, daemon=True)
         thread.start()
+
+    def _refresh_accounts(self):
+        if not self.account_manager:
+            return
+        accounts = self.account_manager.load()
+        total = len(accounts)
+        with_mafile = sum(1 for a in accounts if a.has_mafile)
+        without_mafile = total - with_mafile
+        self.label_accounts_status.setText(
+            f"Accounts: {total} ({with_mafile} with maFile, {without_mafile} without)"
+        )
+        if self.log_widget:
+            self.log_widget.smart_log(
+                f"[INFO] Accounts refreshed: {total} total "
+                f"({with_mafile} with maFile, {without_mafile} without)"
+            )
+
+    def _open_accounts_file(self):
+        if not self.account_manager:
+            return
+        path = self.account_manager.accounts_file
+        if not os.path.exists(path):
+            with open(path, "w") as f:
+                f.write("")
+        self._open_path(path)
+
+    def _open_mafiles_folder(self):
+        if not self.account_manager:
+            return
+        path = self.account_manager.mafiles_dir
+        os.makedirs(path, exist_ok=True)
+        self._open_path(path)
+
+    @staticmethod
+    def _open_path(path: str):
+        if sys.platform == "win32":
+            os.startfile(path)
+        elif sys.platform == "darwin":
+            subprocess.Popen(["open", path])
+        else:
+            subprocess.Popen(["xdg-open", path])
+
+    def _save_config(self):
+        if not self._config_path or self._loading_config:
+            return
+        config = {
+            "multithread": self.cb_multithread.isChecked(),
+            "threads": self.spin_threads.value(),
+            "delay": self.spin_delay.value(),
+        }
+        try:
+            os.makedirs(os.path.dirname(self._config_path), exist_ok=True)
+            with open(self._config_path, "w", encoding="utf-8") as f:
+                json.dump(config, f, indent=2)
+        except Exception:
+            pass
+
+    def _load_config(self):
+        if not self._config_path or not os.path.exists(self._config_path):
+            return
+        self._loading_config = True
+        try:
+            with open(self._config_path, "r", encoding="utf-8") as f:
+                config = json.load(f)
+            self.spin_delay.setValue(config.get("delay", 5))
+            threads = config.get("threads", 1)
+            if config.get("multithread"):
+                self.cb_multithread.setChecked(True)
+                self.spin_threads.setEnabled(True)
+            if threads >= 1:
+                self.spin_threads.setValue(threads)
+        except Exception:
+            pass
+        finally:
+            self._loading_config = False
 
     def _open_proxies_file(self):
         path = self.proxy_manager.proxies_file

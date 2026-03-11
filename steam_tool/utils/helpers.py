@@ -27,32 +27,28 @@ def random_nickname() -> str:
     template = random.randint(1, 5)
 
     if template == 1:
-        # прилагательное + существительное
         t = data["template1"]
         adj = random.choice(t["adjectives"])
         noun = random.choice(t["nouns"])
-        return f"{adj} {noun}"
+        nick = f"{adj} {noun}"
 
     elif template == 2:
-        # звание/роль + область
         t = data["template2"]
         role = random.choice(t["roles"])
         domain = random.choice(t["domains"])
-        return f"{role} {domain}"
+        nick = f"{role} {domain}"
 
     elif template == 3:
-        # одно мемное слово
         word = random.choice(data["template3"]["words"])
         if random.random() < 0.4:
             word += str(random.randint(1, 9999))
-        return word
+        nick = word
 
     elif template == 4:
-        # мемная фраза (с подстановкой чисел)
         phrase = random.choice(data["template4"]["phrases"])
         n = random.choice([18, 19, 20, 21, 228, 322, 1337, 2003, 2005, 2007,
                            30, 50, 100, 150, 200, 300, 500, 666, 777, 1488])
-        return phrase.replace("{n}", str(n))
+        nick = phrase.replace("{n}", str(n))
 
     else:
         # кличка/имя + цифры
@@ -65,7 +61,12 @@ def random_nickname() -> str:
             "2003", "2004", "2005", "2006", "2007",
             "007", "008", "013", "096", "174",
         ])
-        return f"{name}{digits}"
+        nick = f"{name}{digits}"
+
+    # Steam requires 2-32 characters
+    if len(nick) > 32:
+        nick = nick[:32].rstrip()
+    return nick
 
 
 def random_group_name() -> str:
@@ -78,9 +79,19 @@ def random_group_abbreviation() -> str:
     return "".join(random.choices(string.ascii_uppercase, k=random.randint(3, 6)))
 
 
+_bio_generator = None
+
 def random_bio() -> str:
-    bios = _load_lines("bios.txt")
-    return random.choice(bios)
+    global _bio_generator
+    if _bio_generator is None:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "bio_generator",
+            os.path.join(_DATA_DIR, "bio_generator.py"),
+        )
+        _bio_generator = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_bio_generator)
+    return _bio_generator.generate_bio()
 
 
 def generate_random_avatar(size: int = 184) -> bytes:

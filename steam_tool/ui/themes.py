@@ -76,6 +76,14 @@ QPushButton#successBtn:hover {
     background-color: #008000;
 }
 
+QPushButton#warningBtn {
+    background-color: #b8860b;
+}
+
+QPushButton#warningBtn:hover {
+    background-color: #d4a017;
+}
+
 QLineEdit, QSpinBox, QTextEdit, QPlainTextEdit {
     background-color: #0f1a30;
     color: #e0e0e0;
@@ -197,6 +205,15 @@ QSlider::handle:horizontal {
     border-radius: 8px;
 }
 
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollArea > QWidget > QWidget {
+    background-color: transparent;
+}
+
 QToolTip {
     background-color: #16213e;
     color: #e0e0e0;
@@ -281,6 +298,14 @@ QPushButton#successBtn {
 
 QPushButton#successBtn:hover {
     background-color: #43a047;
+}
+
+QPushButton#warningBtn {
+    background-color: #f57c00;
+}
+
+QPushButton#warningBtn:hover {
+    background-color: #fb8c00;
 }
 
 QLineEdit, QSpinBox, QTextEdit, QPlainTextEdit {
@@ -403,6 +428,15 @@ QSlider::handle:horizontal {
     height: 16px;
     margin: -5px 0;
     border-radius: 8px;
+}
+
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollArea > QWidget > QWidget {
+    background-color: transparent;
 }
 
 QToolTip {

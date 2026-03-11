@@ -4,17 +4,17 @@ from typing import Optional
 
 
 class ProxyManager:
-    """Thread-safe proxy pool with atomic allocation."""
+    """Thread-safe proxy pool with round-robin allocation and rotation on failure."""
 
     def __init__(self, proxies_file: str):
         self.proxies_file = proxies_file
         self._proxies: list[str] = []
-        self._used: set[int] = set()
+        self._index = 0
         self._lock = threading.Lock()
 
     def load(self) -> int:
         self._proxies.clear()
-        self._used.clear()
+        self._index = 0
         if not os.path.exists(self.proxies_file):
             return 0
         with open(self.proxies_file, encoding="utf-8") as f:
@@ -30,27 +30,34 @@ class ProxyManager:
 
     @property
     def available_count(self) -> int:
-        with self._lock:
-            return len(self._proxies) - len(self._used)
+        return len(self._proxies)
 
     def acquire(self) -> Optional[dict]:
-        """Get next unused proxy. Returns requests-compatible proxy dict or None."""
+        """Get next proxy in round-robin order. Returns requests-compatible proxy dict."""
         with self._lock:
-            for i, proxy_str in enumerate(self._proxies):
-                if i not in self._used:
-                    self._used.add(i)
-                    return self._parse_proxy(proxy_str)
-        return None
+            if not self._proxies:
+                return None
+            proxy_str = self._proxies[self._index % len(self._proxies)]
+            self._index += 1
+            return self._parse_proxy(proxy_str)
 
-    def release_and_get_next(self, failed_proxy: Optional[dict]) -> Optional[dict]:
-        """Mark current proxy as permanently failed and get next unused one."""
-        # The failed proxy stays in _used (permanently excluded)
+    def get_different(self, current_proxy: Optional[dict] = None) -> Optional[dict]:
+        """Get a different proxy than the current one (for rotation on failure)."""
+        if not self._proxies:
+            return None
+        if len(self._proxies) == 1:
+            return self.acquire()  # only one proxy available
+        # Get next proxy, which will be different due to round-robin
         return self.acquire()
 
+    def release_and_get_next(self, failed_proxy: Optional[dict]) -> Optional[dict]:
+        """Alias for get_different — get next proxy after failure."""
+        return self.get_different(failed_proxy)
+
     def reset(self):
-        """Reset all proxy usage tracking."""
+        """Reset round-robin counter."""
         with self._lock:
-            self._used.clear()
+            self._index = 0
 
     @staticmethod
     def _parse_proxy(proxy_str: str) -> dict:

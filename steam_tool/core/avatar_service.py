@@ -1,15 +1,39 @@
+import os
+import random
+
 from core.steam_auth import SteamSession
 from core.account_manager import Account
-from utils.helpers import generate_random_avatar
+
+_AVATARS_DIR = os.path.join(os.path.dirname(__file__), os.pardir, "data", "avatars")
+
+
+def _get_random_avatar_bytes() -> tuple:
+    """Pick a random avatar image from the avatars pool.
+
+    Returns (filename, bytes, content_type).
+    """
+    files = [f for f in os.listdir(_AVATARS_DIR)
+             if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+    if not files:
+        raise Exception("No avatar images found in data/avatars/")
+
+    chosen = random.choice(files)
+    path = os.path.join(_AVATARS_DIR, chosen)
+    with open(path, "rb") as f:
+        data = f.read()
+
+    ext = chosen.rsplit(".", 1)[-1].lower()
+    ct = "image/jpeg" if ext in ("jpg", "jpeg") else "image/png"
+    return chosen, data, ct
 
 
 def set_random_avatar(session: SteamSession, account: Account, **kwargs) -> str:
     """Upload a random avatar to the Steam profile."""
-    avatar_bytes = generate_random_avatar(184)
+    filename, avatar_bytes, content_type = _get_random_avatar_bytes()
 
     url = f"{session.BASE_URL}/actions/FileUploader"
     files = {
-        "avatar": ("avatar.png", avatar_bytes, "image/png"),
+        "avatar": (filename, avatar_bytes, content_type),
     }
     data = {
         "type": "player_avatar_image",
@@ -24,7 +48,6 @@ def set_random_avatar(session: SteamSession, account: Account, **kwargs) -> str:
         result = resp.json() if resp.headers.get("content-type", "").startswith("application/json") else {}
         if result.get("success"):
             return "Avatar updated"
-        # Some responses return HTML on success
         if "success" in resp.text.lower() or resp.status_code == 200:
             return "Avatar uploaded"
     raise Exception(f"Avatar upload failed: {resp.status_code} {resp.text[:200]}")

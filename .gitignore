@@ -35,6 +35,9 @@ accounts.txt
 proxies.txt
 mafiles/
 
+# Avatar images pool (too large for git)
+steam_tool/data/avatars/
+
 # Test scripts
 test_*.py
 scrape_bios.py

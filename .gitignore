@@ -10,13 +10,6 @@ dist/
 build/
 
 # Data files with sensitive info
-steam_tool/data/accounts.txt
-steam_tool/data/proxies.txt
-steam_tool/data/mafiles/
-steam_tool/data/logs.txt
-steam_tool/data/errors.txt
-
-# Root data directory
 data/accounts.txt
 data/proxies.txt
 data/mafiles/
@@ -36,7 +29,7 @@ proxies.txt
 mafiles/
 
 # Avatar images pool (too large for git)
-steam_tool/data/avatars/
+data/avatars/
 
 # Test scripts
 test_*.py

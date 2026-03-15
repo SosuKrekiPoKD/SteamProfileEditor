@@ -11,6 +11,8 @@ class LogWidget(QPlainTextEdit):
 
     Auto-scrolls only if user is at the bottom.
     If user scrolled up to read logs, it stays in place.
+    Uses signal-driven approach: rangeChanged handles auto-scroll,
+    valueChanged tracks whether user scrolled away from bottom.
     """
 
     def __init__(self, log_dir: str = "", parent=None):
@@ -23,9 +25,27 @@ class LogWidget(QPlainTextEdit):
         self._log_file = os.path.join(log_dir, "logs.txt") if log_dir else ""
         self._error_file = os.path.join(log_dir, "errors.txt") if log_dir else ""
 
-    def _is_scrolled_to_bottom(self) -> bool:
+        # Auto-scroll state: True = user is at the bottom, scroll with new content
+        self._auto_scroll = True
+        self._updating = False  # guard against re-entrant signal handling
+
         sb = self.verticalScrollBar()
-        return sb.value() >= sb.maximum() - 5
+        sb.valueChanged.connect(self._on_scroll_value_changed)
+        sb.rangeChanged.connect(self._on_scroll_range_changed)
+
+    def _on_scroll_value_changed(self, value):
+        """Track whether user scrolled away from bottom."""
+        if self._updating:
+            return
+        sb = self.verticalScrollBar()
+        self._auto_scroll = value >= sb.maximum() - 20
+
+    def _on_scroll_range_changed(self, _min, _max):
+        """When new content extends the scroll range, auto-scroll if at bottom."""
+        if self._auto_scroll:
+            self._updating = True
+            self.verticalScrollBar().setValue(_max)
+            self._updating = False
 
     def _timestamp(self) -> str:
         return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -84,10 +104,7 @@ class LogWidget(QPlainTextEdit):
             self.append_log(message)
 
     def _append_colored(self, message: str, color):
-        # Remember if user was at the bottom before adding text
-        was_at_bottom = self._is_scrolled_to_bottom()
-
-        cursor = self.textCursor()
+        cursor = QTextCursor(self.document())
         cursor.movePosition(QTextCursor.End)
 
         fmt = QTextCharFormat()
@@ -95,12 +112,8 @@ class LogWidget(QPlainTextEdit):
             fmt.setForeground(color)
 
         cursor.insertText(message + "\n", fmt)
-
-        # Only auto-scroll if user was already at the bottom
-        if was_at_bottom:
-            self.setTextCursor(cursor)
-            sb = self.verticalScrollBar()
-            sb.setValue(sb.maximum())
+        # Scrolling is handled by _on_scroll_range_changed signal
 
     def clear_log(self):
+        self._auto_scroll = True
         self.clear()

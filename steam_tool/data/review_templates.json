@@ -1,0 +1,97 @@
+{
+  "positive": {
+    "t1_short": [
+      "nice", "cool game", "worth it", "pretty good", "solid", "fun",
+      "recommended", "10/10", "good stuff", "love it", "goated",
+      "based game", "W game", "certified banger", "peak gaming",
+      "better than expected", "hidden gem", "masterpiece", "perfect",
+      "surprisingly good", "addicting", "amazing", "fire", "slaps",
+      "banger", "absolute cinema", "unironically good", "go buy this",
+      "best purchase ever", "no regrets", "cozy game", "great vibes",
+      "so good", "actually fire", "legit good", "yes", "just buy it",
+      "chef's kiss", "S tier", "peak", "kino", "W", "blessed game",
+      "instant classic", "top tier", "elite", "straight fire",
+      "game of the year", "underrated gem", "100% worth", "must play"
+    ],
+    "t2_template": [
+      "{hours}h played. {verdict}.",
+      "played for {hours} hours. {verdict}",
+      "{hours} hours in. {verdict}",
+      "after {hours}h — {verdict}",
+      "{hours} hours and counting. {verdict}",
+      "{hours}h in and {verdict}"
+    ],
+    "t2_hours": ["2", "3", "5", "8", "10", "15", "20", "25", "30", "40", "50", "75", "100", "150", "200", "300", "500", "1000"],
+    "t2_verdict": [
+      "worth every minute", "no regrets", "would recommend",
+      "pretty decent", "solid experience", "good game",
+      "time well spent", "surprisingly good", "loved it",
+      "great value", "not bad at all", "best purchase",
+      "better than expected", "can't stop", "still going",
+      "absolute banger", "just gets better", "still fun"
+    ],
+    "t3_prefix": [
+      "my friend said it's bad but", "bought on sale and",
+      "downloaded for fun and", "tried it once and",
+      "was bored so i played this and", "ngl",
+      "honestly", "fr", "lowkey", "deadass",
+      "not gonna lie", "tbh", "at first i was skeptical but",
+      "everyone told me to try it and", "finally played it and"
+    ],
+    "t3_suffix": [
+      "it's actually fire", "i can't stop playing",
+      "now i'm hooked", "it's pretty good", "i love it",
+      "it slaps", "it hits different",
+      "this goes hard", "totally worth it",
+      "no regrets at all", "it's amazing", "it's goated",
+      "best decision ever", "now it's my favorite",
+      "it exceeded all expectations"
+    ]
+  },
+  "negative": {
+    "t1_short": [
+      "meh", "not worth it", "mid", "boring", "waste of time",
+      "refund", "trash", "0/10", "don't buy", "L game",
+      "not for me", "overhyped", "dead game", "uninstalled",
+      "regret buying", "scam", "disappointment", "terrible",
+      "worst purchase", "dogwater", "garbage", "pain",
+      "delete this", "who made this", "unplayable",
+      "nah", "hard pass", "skip this", "yikes", "bruh",
+      "not it", "actual L", "down bad", "F tier", "cope",
+      "never again", "rip my money", "just no", "why",
+      "cringe", "fell off", "wasted potential", "sleep"
+    ],
+    "t2_template": [
+      "{hours}h played. {verdict}.",
+      "played for {hours} hours. {verdict}",
+      "{hours} hours wasted. {verdict}",
+      "after {hours}h — {verdict}",
+      "gave it {hours}h. {verdict}",
+      "{hours}h and {verdict}"
+    ],
+    "t2_hours": ["0.5", "1", "1.5", "2", "3", "5", "8", "10", "15", "20"],
+    "t2_verdict": [
+      "want my time back", "don't recommend", "not worth it",
+      "waste of money", "disappointing", "mid at best",
+      "can't believe i paid for this", "boring",
+      "save your money", "just don't", "regret everything",
+      "it never gets better", "still bad", "pain",
+      "complete waste", "should have refunded", "not fun"
+    ],
+    "t3_prefix": [
+      "my friend recommended this but", "bought on sale and still",
+      "tried it and", "was hoping it'd be good but",
+      "ngl", "honestly", "fr", "lowkey",
+      "not gonna lie", "tbh", "everyone hyped this but",
+      "gave it a fair chance but", "wanted to like it but"
+    ],
+    "t3_suffix": [
+      "it's actually trash", "i fell asleep",
+      "i want a refund", "it's mid", "it's boring",
+      "don't waste your time", "save your money",
+      "biggest regret", "it's painful", "couldn't finish it",
+      "it's just bad", "total letdown", "not worth a penny",
+      "instant uninstall", "pure suffering"
+    ]
+  }
+}

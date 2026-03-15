@@ -1,4 +1,5 @@
 import json
+import random
 import time
 import threading
 
@@ -91,7 +92,9 @@ def claim_free_pointshop_items(session: SteamSession, account: Account, **kwargs
 
     if claimed == 0 and already_owned == len(free_items):
         return f"All {len(free_items)} free items already owned"
-    return f"Claimed {claimed}/{len(free_items)} free items ({already_owned} already owned, {failed} failed)"
+    if failed > 0:
+        raise Exception(f"{failed} items failed to claim ({claimed} claimed, {already_owned} already owned)")
+    return f"Claimed {claimed}/{len(free_items)} free items ({already_owned} already owned)"
 
 
 def _query_free_items(session, _log):
@@ -251,8 +254,8 @@ def _check_free_item(item, seen_defids, include_bundles=True):
     return enriched
 
 
-def _redeem_item(session, defid, _log=None):
-    """Redeem a single free item via RedeemPoints.
+def _redeem_item(session, defid, _log=None, expected_cost=0):
+    """Redeem an item via RedeemPoints.
 
     Uses input_json with proper integer types (matching protobuf definition).
     Falls back to direct form data if input_json fails.
@@ -260,7 +263,7 @@ def _redeem_item(session, defid, _log=None):
     url = f"{API_URL}/ILoyaltyRewardsService/RedeemPoints/v1/"
 
     # Method 1: input_json as URL param
-    redeem_data = {"defid": int(defid), "expected_points_cost": 0}
+    redeem_data = {"defid": int(defid), "expected_points_cost": int(expected_cost)}
     try:
         resp = session.session.post(
             url,
@@ -298,9 +301,12 @@ def _redeem_item(session, defid, _log=None):
     if resp.status_code == 500:
         return "already_owned"
 
-    # 200 with empty response — try fallback with direct form data
+    # 200 with empty response: for paid items this means already owned;
+    # for free items (expected_cost=0) try fallback method
     if resp.status_code == 200 and not result:
-        return _redeem_item_fallback(session, defid, _log)
+        if expected_cost > 0:
+            return "already_owned"
+        return _redeem_item_fallback(session, defid, _log, expected_cost=expected_cost)
 
     # Other error
     error_msg = body.get("message", "") or resp.text[:200]
@@ -312,12 +318,12 @@ def _redeem_item(session, defid, _log=None):
     return f"error: HTTP {resp.status_code}, eresult={eresult}"
 
 
-def _redeem_item_fallback(session, defid, _log=None):
+def _redeem_item_fallback(session, defid, _log=None, expected_cost=0):
     """Fallback: try RedeemPoints with direct form fields (old method)."""
     url = (f"{API_URL}/ILoyaltyRewardsService/RedeemPoints/v1/"
            f"?access_token={session.access_token}")
 
-    data = {"defid": str(defid), "expected_points_cost": "0"}
+    data = {"defid": str(defid), "expected_points_cost": str(int(expected_cost))}
 
     try:
         resp = session.session.post(url, data=data, timeout=15)
@@ -343,3 +349,179 @@ def _redeem_item_fallback(session, defid, _log=None):
         return "already_owned"
 
     return "already_owned"  # empty 200 after both methods = already owned
+
+
+# ---------------------------------------------------------------------------
+# Buy random Points Shop item
+# ---------------------------------------------------------------------------
+
+def _get_points_balance(session):
+    """Get the user's current Steam Points balance via GetSummary."""
+    url = f"{API_URL}/ILoyaltyRewardsService/GetSummary/v1/"
+    params = {
+        "access_token": session.access_token,
+        "input_json": json.dumps({"steamid": str(session.steam_id)}),
+    }
+    try:
+        resp = session.session.get(url, params=params, timeout=15)
+    except Exception as e:
+        raise Exception(f"GetSummary request failed: {e}")
+
+    if resp.status_code != 200:
+        raise Exception(f"GetSummary HTTP {resp.status_code}")
+
+    try:
+        data = resp.json().get("response", {})
+    except ValueError:
+        raise Exception("GetSummary invalid JSON")
+
+    summary = data.get("summary", data)
+    points = summary.get("points", 0)
+    if isinstance(points, str):
+        points = int(points) if points.isdigit() else 0
+    return int(points)
+
+
+def _query_affordable_items(session, balance, _log):
+    """Query Points Shop for paid items that cost <= balance.
+
+    Queries without specific filters to get a broad selection,
+    paginates through several pages.
+    """
+    url = f"{API_URL}/ILoyaltyRewardsService/QueryRewardItems/v1/"
+    affordable = []
+    seen_defids = set()
+    cursor = ""
+    max_pages = 5
+
+    for page in range(1, max_pages + 1):
+        input_data = {
+            "count": 200,
+            "language": "english",
+            "include_direct_purchase_disabled": False,
+        }
+        if cursor:
+            input_data["cursor"] = cursor
+
+        params = {
+            "access_token": session.access_token,
+            "input_json": json.dumps(input_data),
+        }
+
+        try:
+            resp = session.session.get(url, params=params, timeout=20)
+        except Exception as e:
+            _log(f"  [WARN] QueryRewardItems page {page} failed: {e}")
+            break
+
+        if resp.status_code != 200:
+            _log(f"  [WARN] QueryRewardItems HTTP {resp.status_code}")
+            break
+
+        try:
+            data = resp.json().get("response", {})
+        except ValueError:
+            break
+
+        definitions = data.get("definitions", [])
+        if not definitions:
+            break
+
+        for item in definitions:
+            defid = item.get("defid")
+            if defid in seen_defids:
+                continue
+            seen_defids.add(defid)
+
+            if item.get("active") is False:
+                continue
+
+            point_cost = item.get("point_cost", -1)
+            if isinstance(point_cost, str):
+                point_cost = int(point_cost) if point_cost.isdigit() else -1
+
+            # Only paid items that we can afford
+            if point_cost <= 0 or point_cost > balance:
+                continue
+
+            item_type = item.get("type", 0)
+            if isinstance(item_type, str):
+                item_type = int(item_type) if item_type.isdigit() else 0
+
+            # Skip bundles — they have complex pricing
+            if item_type in BUNDLE_TYPES:
+                continue
+
+            # Build display info
+            cid = item.get("community_item_data", {})
+            name = (cid.get("item_name", "") or cid.get("item_title", "")
+                    or item.get("internal_description", "") or f"defid:{defid}")
+
+            community_class = item.get("community_item_class", 0)
+            if isinstance(community_class, str):
+                community_class = int(community_class) if community_class.isdigit() else 0
+            type_name = ITEM_TYPE_NAMES.get(community_class, f"type:{item_type}")
+
+            affordable.append({
+                "defid": defid,
+                "point_cost": point_cost,
+                "_display_name": name,
+                "_type_name": type_name,
+            })
+
+        next_cursor = data.get("next_cursor", "")
+        if not next_cursor or next_cursor == cursor:
+            break
+        cursor = next_cursor
+        time.sleep(0.3)
+
+    return affordable
+
+
+def buy_random_pointshop_item(session: SteamSession, account: Account, **kwargs) -> str:
+    """Buy a random affordable item from the Steam Points Shop."""
+    _log = kwargs.get("log_callback") or (lambda m: None)
+
+    if not session.access_token:
+        raise Exception("No access_token — cannot access Points Shop API")
+
+    # Step 1: Get point balance
+    balance = _get_points_balance(session)
+    _log(f"[INFO] {account.username}: Points balance: {balance}")
+
+    if balance == 0:
+        return "No points available (balance: 0)"
+
+    # Step 2: Query affordable items
+    _log(f"[INFO] {account.username}: searching for items up to {balance} points...")
+    items = _query_affordable_items(session, balance, _log)
+
+    if not items:
+        return f"No affordable items found (balance: {balance})"
+
+    _log(f"[INFO] {account.username}: found {len(items)} affordable item(s)")
+
+    # Step 3: Shuffle and try items until one is purchased
+    random.shuffle(items)
+    owned_count = 0
+
+    for chosen in items:
+        defid = chosen["defid"]
+        cost = chosen["point_cost"]
+        name = chosen["_display_name"]
+        type_name = chosen["_type_name"]
+
+        result = _redeem_item(session, defid, _log=_log, expected_cost=cost)
+
+        if result == "ok":
+            remaining = balance - cost
+            _log(f"[OK] {account.username}: bought «{name}» ({type_name}) "
+                 f"for {cost} pts (skipped {owned_count} owned), remaining: ~{remaining} pts")
+            return f"Bought «{name}» ({type_name}) for {cost} pts"
+        elif result == "already_owned":
+            owned_count += 1
+            continue
+        else:
+            raise Exception(f"Purchase failed: {result}")
+
+    return f"All {len(items)} affordable items already owned"

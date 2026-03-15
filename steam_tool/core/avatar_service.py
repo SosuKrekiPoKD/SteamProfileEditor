@@ -10,12 +10,17 @@ _AVATARS_DIR = os.path.join(os.path.dirname(__file__), os.pardir, "data", "avata
 def _get_random_avatar_bytes() -> tuple:
     """Pick a random avatar image from the avatars pool.
 
+    Falls back to generated avatar if no images found.
     Returns (filename, bytes, content_type).
     """
+    if not os.path.isdir(_AVATARS_DIR):
+        raise Exception("Avatar folder not found. Add .jpg/.png images to steam_tool/data/avatars/")
+
     files = [f for f in os.listdir(_AVATARS_DIR)
              if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+
     if not files:
-        raise Exception("No avatar images found in data/avatars/")
+        raise Exception("No avatar images found. Add .jpg/.png images to steam_tool/data/avatars/")
 
     chosen = random.choice(files)
     path = os.path.join(_AVATARS_DIR, chosen)

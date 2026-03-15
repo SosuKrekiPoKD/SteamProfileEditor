@@ -150,7 +150,7 @@ class TaskExecutor:
 
     def execute_sequential(self, accounts: list, task_funcs: list,
                            delay: int = 5, use_proxies: bool = False,
-                           threads: int = 1):
+                           threads: int = 1, emit_finished: bool = True):
         """
         Execute ALL tasks for each account.
         threads=1: sequential (one by one with delay).
@@ -208,8 +208,9 @@ class TaskExecutor:
 
         # Log summary
         self._log_summary()
-        self.signals.finished.emit()
-        self.signals.log.emit("Task finished.")
+        if emit_finished:
+            self.signals.finished.emit()
+            self.signals.log.emit("Task finished.")
 
     def _log_summary(self):
         """Log per-account summary after all tasks complete."""

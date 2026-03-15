@@ -17,7 +17,8 @@ from core.profile_service import (
     set_random_background, set_random_mini_profile,
     set_random_avatar_frame, set_random_animated_avatar,
 )
-from core.pointshop_service import claim_free_pointshop_items
+from core.pointshop_service import claim_free_pointshop_items, buy_random_pointshop_item
+from core.review_service import leave_random_review
 from core.friends_service import add_friends_between_accounts
 from ui.log_widget import LogWidget
 
@@ -130,6 +131,9 @@ class ActionsTab(QWidget):
         self.cb_pointshop = QCheckBox("Claim free Points Shop items (avatars, stickers, frames, etc.)")
         pointshop_layout.addWidget(self.cb_pointshop)
 
+        self.cb_buy_ps_item = QCheckBox("Buy random Points Shop item")
+        pointshop_layout.addWidget(self.cb_buy_ps_item)
+
         pointshop_group.setLayout(pointshop_layout)
         layout.addWidget(pointshop_group)
 
@@ -178,6 +182,16 @@ class ActionsTab(QWidget):
 
         community_group.setLayout(community_layout)
         layout.addWidget(community_group)
+
+        # === Games group ===
+        games_group = QGroupBox("Games")
+        games_layout = QVBoxLayout()
+
+        self.cb_leave_review = QCheckBox("Leave review on random game")
+        games_layout.addWidget(self.cb_leave_review)
+
+        games_group.setLayout(games_layout)
+        layout.addWidget(games_group)
 
         # === Friends group ===
         friends_group = QGroupBox("Friends")
@@ -296,7 +310,15 @@ class ActionsTab(QWidget):
         self._completed += 1
         self.progress.setValue(self._completed)
 
+    def _on_friend_progress(self, current, total):
+        """Update progress bar using actual friend pair counts."""
+        new_max = self._actions_progress_count + total
+        if new_max != self.progress.maximum():
+            self.progress.setMaximum(max(new_max, 1))
+        self.progress.setValue(self._actions_progress_count + current)
+
     def _on_finished(self):
+        self.progress.setValue(self.progress.maximum())
         self.btn_start.setEnabled(True)
         self.btn_cancel.setEnabled(False)
         # Check if there are still failed accounts
@@ -350,6 +372,10 @@ class ActionsTab(QWidget):
                 lambda s, a, _cache=_ps_cache, **kw:
                     claim_free_pointshop_items(s, a, _ps_cache=_cache, **kw),
             ))
+        if self.cb_buy_ps_item.isChecked():
+            actions.append(("Buy PS Item", buy_random_pointshop_item))
+        if self.cb_leave_review.isChecked():
+            actions.append(("Leave Review", leave_random_review))
 
         return actions
 
@@ -444,11 +470,9 @@ class ActionsTab(QWidget):
         self.progress.setValue(0)
 
         progress_total = len(selected) * len(actions)
-        if do_friends:
-            progress_total += len(selected) * friends_max
         self.progress.setMaximum(max(progress_total, 1))
-
         self._completed = 0
+        self._actions_progress_count = progress_total
 
         # Connect signals only once
         if not self._signals_connected:
@@ -462,7 +486,7 @@ class ActionsTab(QWidget):
         # Signals for friend adding
         self._friend_signals = _FriendSignals()
         self._friend_signals.log.connect(self.log_widget.smart_log)
-        self._friend_signals.progress.connect(lambda c, t: self._on_progress(c, t))
+        self._friend_signals.progress.connect(self._on_friend_progress)
         self._friend_signals.finished.connect(self._on_finished)
 
         def _run():
@@ -471,6 +495,7 @@ class ActionsTab(QWidget):
                     selected, actions,
                     delay=delay, use_proxies=use_proxies,
                     threads=threads,
+                    emit_finished=not do_friends,
                 )
 
             if do_friends:
@@ -485,7 +510,9 @@ class ActionsTab(QWidget):
                     log_callback=self._friend_signals.log.emit,
                     progress_callback=self._friend_signals.progress.emit,
                     cancel_event=cancel_event,
+                    threads=threads,
                 )
+                self._friend_signals.log.emit("Task finished.")
                 self._friend_signals.finished.emit()
 
         thread = threading.Thread(target=_run, daemon=True)

@@ -1,11 +1,15 @@
 import random
 import re
 import time
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Optional
 
 from core.steam_auth import SteamSession, SteamAuthError
 from core.account_manager import Account
 from core.proxy_manager import ProxyManager
+
+MAX_PROXY_RETRIES = 3
 
 
 def add_friends_between_accounts(
@@ -18,6 +22,7 @@ def add_friends_between_accounts(
     log_callback=None,
     progress_callback=None,
     cancel_event=None,
+    threads: int = 1,
 ):
     """
     Add friends to selected accounts from the full account pool.
@@ -49,12 +54,13 @@ def add_friends_between_accounts(
 
     # ===== PHASE 1: Login all accounts to get real SteamID64 =====
     if log_callback:
-        log_callback(f"=== Phase 1: Logging in {len(all_unique)} accounts ===")
+        log_callback(f"=== Phase 1: Logging in {len(all_unique)} accounts ({threads} threads) ===")
 
     sessions = {}       # username -> SteamSession
     real_steam_ids = {}  # username -> SteamID64
+    _login_lock = threading.Lock()
 
-    for acc in all_unique:
+    def _login_one(acc):
         if cancel_event and cancel_event.is_set():
             return
 
@@ -62,22 +68,55 @@ def add_friends_between_accounts(
         if use_proxies and proxy_manager:
             proxy = proxy_manager.acquire()
 
-        try:
-            session = SteamSession(
-                username=acc.username,
-                password=acc.password,
-                mafile_data=acc.mafile_data if acc.has_mafile else None,
-                proxy=proxy,
-                log_callback=log_callback,
-            )
-            session.login()
-            sessions[acc.username] = session
-            real_steam_ids[acc.username] = session.steam_id
-            if log_callback:
-                log_callback(f"[OK] {acc.username} logged in (SteamID64: {session.steam_id})")
-        except SteamAuthError as e:
-            if log_callback:
-                log_callback(f"[FAIL] Login failed for {acc.username}: {_diagnose_error(str(e))}")
+        retries = MAX_PROXY_RETRIES if (use_proxies and proxy_manager) else 1
+        last_error = ""
+
+        for attempt in range(retries):
+            if cancel_event and cancel_event.is_set():
+                return
+            try:
+                session = SteamSession(
+                    username=acc.username,
+                    password=acc.password,
+                    mafile_data=acc.mafile_data if acc.has_mafile else None,
+                    proxy=proxy,
+                    log_callback=log_callback,
+                )
+                session.login()
+                with _login_lock:
+                    sessions[acc.username] = session
+                    real_steam_ids[acc.username] = session.steam_id
+                if log_callback:
+                    log_callback(f"[OK] {acc.username} logged in (SteamID64: {session.steam_id})")
+                return
+            except (SteamAuthError, Exception) as e:
+                last_error = str(e)
+                if attempt < retries - 1 and use_proxies and proxy_manager:
+                    if log_callback:
+                        log_callback(
+                            f"[RETRY] {acc.username}: login failed ({_diagnose_error(last_error)}), "
+                            f"switching proxy (attempt {attempt + 1}/{retries})..."
+                        )
+                    proxy = proxy_manager.get_different(proxy)
+                    if proxy is None:
+                        if log_callback:
+                            log_callback(f"[FAIL] {acc.username}: no more proxies available")
+                        return
+
+        if log_callback:
+            log_callback(f"[FAIL] Login failed for {acc.username}: {_diagnose_error(last_error)}")
+
+    if threads > 1:
+        with ThreadPoolExecutor(max_workers=threads) as executor:
+            futures = [executor.submit(_login_one, acc) for acc in all_unique]
+            for fut in as_completed(futures):
+                if cancel_event and cancel_event.is_set():
+                    break
+    else:
+        for acc in all_unique:
+            if cancel_event and cancel_event.is_set():
+                return
+            _login_one(acc)
 
     # Check we have enough logged-in accounts
     logged_selected = [a for a in selected_accounts if a.username in sessions]
@@ -94,35 +133,44 @@ def add_friends_between_accounts(
 
     if log_callback:
         log_callback(f"=== Phase 2: Adding friends ({len(logged_selected)} selected, "
-                     f"{len(logged_pool)} in pool) ===")
+                     f"{len(logged_pool)} in pool, {threads} threads) ===")
 
     # ===== PHASE 2: Add friends =====
-    total_pairs = 0
-    completed_pairs = 0
+    _progress_lock = threading.Lock()
+    _counters = {"total": 0, "completed": 0}
 
-    for acc in logged_selected:
+    def _rotate_proxy(sess):
+        """Switch session to a different proxy. Returns True if rotated."""
+        if not use_proxies or not proxy_manager:
+            return False
+        old = sess.session.proxies.get("https", "")
+        new_proxy = proxy_manager.get_different({"https": old, "http": old} if old else None)
+        if new_proxy:
+            sess.session.proxies.update(new_proxy)
+            return True
+        return False
+
+    def _process_one_account(acc):
         if cancel_event and cancel_event.is_set():
-            break
+            return
 
         session = sessions[acc.username]
-        # Pool candidates = all logged-in accounts except self
+        consecutive_proxy_fails = 0
+
         pool = [a for a in logged_pool if a.username != acc.username]
         if not pool:
-            continue
+            return
 
         friend_count = random.randint(min_friends, min(max_friends, len(pool)))
 
         if log_callback:
             log_callback(f"--- {acc.username}: adding {friend_count} friends ---")
 
-        # Get current friend list
         our_steam_ids = list(real_steam_ids.values())
         current_friends = _get_friends_from_list(session, our_steam_ids)
 
-        # Pick random targets from pool
         targets = random.sample(pool, min(friend_count, len(pool)))
 
-        # Replace already-friended targets
         final_targets = []
         used_names = {t.username for t in targets}
         used_names.add(acc.username)
@@ -130,7 +178,6 @@ def add_friends_between_accounts(
         for t in targets:
             target_sid = real_steam_ids.get(t.username, "")
             if target_sid and target_sid in current_friends:
-                # Find replacement
                 available = [a for a in pool if a.username not in used_names]
                 if available:
                     repl = random.choice(available)
@@ -155,7 +202,8 @@ def add_friends_between_accounts(
             else:
                 final_targets.append(t)
 
-        total_pairs += len(final_targets)
+        with _progress_lock:
+            _counters["total"] += len(final_targets)
 
         for target in final_targets:
             if cancel_event and cancel_event.is_set():
@@ -165,22 +213,52 @@ def add_friends_between_accounts(
             if not target_sid:
                 if log_callback:
                     log_callback(f"[FAIL] {target.username}: no SteamID64")
-                completed_pairs += 1
-                if progress_callback:
-                    progress_callback(completed_pairs, total_pairs)
+                with _progress_lock:
+                    _counters["completed"] += 1
+                    if progress_callback:
+                        progress_callback(_counters["completed"], _counters["total"])
                 continue
 
-            # Send friend request
-            success, err = _send_friend_request(session, target_sid, log_callback)
+            # Send friend request with proxy retry
+            success, err = False, ""
+            for attempt in range(MAX_PROXY_RETRIES):
+                success, err = _send_friend_request(session, target_sid, log_callback)
+                if success or not _is_proxy_error(err):
+                    break
+                if attempt < MAX_PROXY_RETRIES - 1:
+                    if _rotate_proxy(session):
+                        if log_callback:
+                            log_callback(
+                                f"[RETRY] {acc.username}: proxy error, switched proxy "
+                                f"(attempt {attempt + 1}/{MAX_PROXY_RETRIES})"
+                            )
+                    else:
+                        break
+
             if success:
+                consecutive_proxy_fails = 0
                 if log_callback:
                     log_callback(f"[OK] {acc.username} -> sent request to {target.username}")
 
-                # Accept from target side
+                # Accept from target side (also with proxy retry)
                 target_session = sessions.get(target.username)
                 if target_session:
                     my_sid = real_steam_ids[acc.username]
-                    accepted, acc_err = _accept_friend_request(target_session, my_sid, log_callback)
+                    accepted, acc_err = False, ""
+                    for attempt in range(MAX_PROXY_RETRIES):
+                        accepted, acc_err = _accept_friend_request(target_session, my_sid, log_callback)
+                        if accepted or not _is_proxy_error(acc_err):
+                            break
+                        if attempt < MAX_PROXY_RETRIES - 1:
+                            if _rotate_proxy(target_session):
+                                if log_callback:
+                                    log_callback(
+                                        f"[RETRY] {target.username}: proxy error on accept, switched proxy "
+                                        f"(attempt {attempt + 1}/{MAX_PROXY_RETRIES})"
+                                    )
+                            else:
+                                break
+
                     if accepted:
                         if log_callback:
                             log_callback(f"[OK] {target.username} accepted {acc.username}")
@@ -191,20 +269,47 @@ def add_friends_between_accounts(
                                 f"{acc.username}: {_diagnose_error(acc_err)}"
                             )
             else:
+                if _is_proxy_error(err):
+                    consecutive_proxy_fails += 1
+                else:
+                    consecutive_proxy_fails = 0
                 if log_callback:
                     log_callback(
                         f"[FAIL] {acc.username} -> failed to add "
                         f"{target.username}: {_diagnose_error(err)}"
                     )
 
-            completed_pairs += 1
-            if progress_callback:
-                progress_callback(completed_pairs, total_pairs)
+            with _progress_lock:
+                _counters["completed"] += 1
+                if progress_callback:
+                    progress_callback(_counters["completed"], _counters["total"])
 
             time.sleep(random.uniform(1.0, 3.0))
 
+    if threads > 1:
+        with ThreadPoolExecutor(max_workers=threads) as executor:
+            futures = [executor.submit(_process_one_account, acc) for acc in logged_selected]
+            for fut in as_completed(futures):
+                if cancel_event and cancel_event.is_set():
+                    break
+    else:
+        for acc in logged_selected:
+            if cancel_event and cancel_event.is_set():
+                break
+            _process_one_account(acc)
+
     if log_callback:
-        log_callback(f"Friend adding complete. {completed_pairs}/{total_pairs} pairs processed.")
+        log_callback(f"Friend adding complete. {_counters['completed']}/{_counters['total']} pairs processed.")
+
+
+def _is_proxy_error(error_str: str) -> bool:
+    """Check if error is proxy/network related (worth retrying with different proxy)."""
+    err = error_str.lower()
+    return any(kw in err for kw in (
+        "proxy", "proxyerror", "tunnel", "timed out", "timeout",
+        "connection refused", "connectionerror", "no exit node",
+        "max retries exceeded",
+    ))
 
 
 def _find_replacement(candidates, used_indices):

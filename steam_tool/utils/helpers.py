@@ -71,12 +71,64 @@ def random_nickname() -> str:
 
 def random_group_name() -> str:
     data = _load_json("group_names.json")
-    suffix = random.randint(1, 999)
-    return f"{random.choice(data['prefixes'])} {random.choice(data['words'])} {suffix}"
+    template = random.randint(1, 6)
+
+    if template == 1:
+        # RU: Бешеный Компот
+        name = f"{random.choice(data['t1_adj'])} {random.choice(data['t1_noun'])}"
+    elif template == 2:
+        # RU: Секта Кабачков
+        name = f"{random.choice(data['t2_type'])} {random.choice(data['t2_noun'])}"
+    elif template == 3:
+        # RU: Дно Общества 228
+        name = f"{random.choice(data['t3_phrase'])} {random.choice(data['t3_number'])}"
+    elif template == 4:
+        # EN: Toxic Spoon Gang
+        name = (f"{random.choice(data['t4_adj'])} {random.choice(data['t4_noun'])} "
+                f"{random.choice(data['t4_suffix'])}")
+    elif template == 5:
+        # EN: Sigma Goblins
+        name = f"{random.choice(data['t5_prefix'])} {random.choice(data['t5_word'])}"
+    else:
+        # X vs Y: Бобры vs Шаурма
+        words = data["t6_word"]
+        w1 = random.choice(words)
+        w2 = random.choice(words)
+        while w2 == w1:
+            w2 = random.choice(words)
+        name = f"{w1} vs {w2}"
+
+    if len(name) > 64:
+        name = name[:64].rstrip()
+    return name
 
 
 def random_group_abbreviation() -> str:
-    return "".join(random.choices(string.ascii_uppercase, k=random.randint(3, 6)))
+    length = random.randint(8, 12)
+    chars = string.ascii_uppercase + string.digits
+    return "".join(random.choices(chars, k=length))
+
+
+def random_review(positive: bool = None) -> tuple:
+    """Generate a random short review text. Returns (text, is_positive)."""
+    data = _load_json("review_templates.json")
+
+    if positive is None:
+        positive = random.random() < 0.6  # 60% positive
+
+    pool = data["positive"] if positive else data["negative"]
+    template = random.randint(1, 3)
+
+    if template == 1:
+        text = random.choice(pool["t1_short"])
+    elif template == 2:
+        tmpl = random.choice(pool["t2_template"])
+        text = tmpl.replace("{hours}", random.choice(pool["t2_hours"]))
+        text = text.replace("{verdict}", random.choice(pool["t2_verdict"]))
+    else:
+        text = f"{random.choice(pool['t3_prefix'])} {random.choice(pool['t3_suffix'])}"
+
+    return text, positive
 
 
 _bio_generator = None
